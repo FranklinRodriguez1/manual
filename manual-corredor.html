@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manual del Corredor 2026 · Maratón 7 Colores</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&family=Unbounded:wght@500;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#1E5C96;
+    --navy-deep:#123A63;
+    --navy-darker:#0C2A48;
+    --lime:#CAED69;
+    --lime-deep:#AEDB3E;
+    --teal:#2DA7B1;
+    --bg-light:#F8FEFF;
+    --white:#FFFFFF;
+    --ink:#123A63;
+    --red:#E82225;
+    --yellow:#E7C319;
+    --green:#339E3C;
+    --font-display:'Bebas Neue', sans-serif;
+    --font-rounded:'Unbounded', sans-serif;
+    --font-body:'Poppins', sans-serif;
+    --max:1240px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:var(--font-body);
+    color:var(--ink);
+    background:var(--bg-light);
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%;display:block;}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 28px;}
+  section{position:relative;overflow:hidden;padding:72px 0;scroll-margin-top:24px;}
+  .bg-light{background:var(--bg-light);}
+  .bg-navy{background:linear-gradient(160deg,var(--navy) 0%,var(--navy-deep) 100%);color:var(--white);}
+  .bg-navy-pattern{
+    background-image:url('manual-corredor-assets/images/image18.avif');
+    background-size:cover;background-position:center;color:var(--white);
+  }
+  .watermark-fish{
+    position:absolute;top:0;right:0;width:46%;max-width:520px;opacity:.9;pointer-events:none;
+  }
+  .watermark-leaf{
+    position:absolute;bottom:0;left:0;width:60%;max-width:620px;opacity:.9;pointer-events:none;
+  }
+  .eyebrow{
+    font-family:var(--font-body);font-weight:700;letter-spacing:.04em;
+    color:var(--teal);text-transform:uppercase;font-size:clamp(18px,2.4vw,24px);margin:0 0 2px;
+  }
+  h1,h2,h3{font-family:var(--font-display);text-transform:uppercase;line-height:.96;margin:0;letter-spacing:.01em;}
+  .title-xl{font-size:clamp(40px,6.4vw,76px);color:var(--navy);}
+  .title-xl .accent{color:var(--teal);}
+  .title-xl.on-navy{color:var(--white);}
+  .title-xl.on-navy .accent{color:var(--lime);}
+  .lead{font-size:clamp(16px,1.9vw,19px);line-height:1.55;font-weight:400;max-width:760px;}
+  .lead b{font-weight:700;}
+  .pill{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--navy);color:var(--white);
+    font-family:var(--font-body);font-weight:700;font-size:15px;
+    padding:10px 22px;border-radius:999px;
+  }
+  .pill.lime{background:var(--lime);color:var(--navy);}
+  .pill.teal{background:var(--teal);color:var(--white);}
+  .pill.outline{background:transparent;border:2px solid var(--navy);color:var(--navy);}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;height:clamp(640px,100vh,1200px);display:flex;align-items:center;
+    background:linear-gradient(180deg,#001a55 0%,#002570 50%,#001448 100%);
+    color:var(--white);padding:0;
+  }
+  /* Full (uncropped) cover image: fits the hero height, right-aligned, left edge fades into the navy */
+  .hero::before{
+    content:"";position:absolute;top:0;right:0;height:100%;aspect-ratio:949/1343;
+    background:url('manual-corredor-assets/images/image1.avif') center/100% 100% no-repeat;
+    -webkit-mask-image:linear-gradient(to right,transparent 0,#000 16%);
+            mask-image:linear-gradient(to right,transparent 0,#000 16%);
+    pointer-events:none;
+  }
+  .hero .wrap{position:relative;z-index:2;width:100%;}
+  .hero-logo{display:flex;align-items:center;gap:14px;margin-bottom:34px;}
+  .hero-logo img{width:58px;height:58px;object-fit:contain;filter:brightness(0) invert(1);}
+  .hero-logo-text{font-family:var(--font-display);line-height:1;font-size:22px;letter-spacing:.03em;}
+  .hero-title{font-size:clamp(54px,11vw,118px);}
+  .hero-title .line2{color:var(--lime);}
+  .hero-divider{
+    display:flex;align-items:center;gap:14px;margin:10px 0;
+    font-family:var(--font-body);font-weight:600;font-size:clamp(14px,2vw,19px);letter-spacing:.05em;
+  }
+  .hero-divider{max-width:min(100%,68%);}
+  .hero-divider::before,.hero-divider::after{content:"";flex:1;height:2px;background:rgba(255,255,255,.5);}
+  .hero-date{font-size:clamp(40px,7vw,64px);letter-spacing:.06em;}
+  .hero-location{margin-top:10px;}
+  .hero-location .pill{background:var(--lime);color:var(--navy-deep);font-size:clamp(13px,1.6vw,17px);}
+
+  /* ---------- INDEX ---------- */
+  .index-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 48px;margin-top:40px;}
+  .index-item{
+    display:grid;grid-template-columns:52px 1fr;align-items:center;gap:22px;min-height:72px;
+    text-decoration:none;color:inherit;border-radius:10px;padding:4px 10px;margin:0 -10px;
+    transition:background .15s ease, transform .15s ease;
+  }
+  .index-item:hover{background:rgba(45,167,177,.08);transform:translateX(2px);}
+  .index-item:hover .index-num{color:var(--teal);}
+  .index-num{
+    font-family:var(--font-rounded);font-weight:800;color:var(--lime);
+    font-size:clamp(24px,2.6vw,30px);line-height:1;transition:color .15s ease;
+  }
+  .index-label{font-weight:700;color:var(--navy);font-size:clamp(14px,1.6vw,17px);line-height:1.2;text-transform:uppercase;}
+  .index-label small{display:block;font-weight:500;font-size:12px;color:var(--teal);text-transform:none;margin-top:2px;}
+
+  /* ---------- INTRO STATS ---------- */
+  .chevron{width:46px;margin-bottom:10px;}
+  .intro-head{margin-bottom:28px;}
+  .intro-head h2.sub{font-size:clamp(30px,5vw,46px);color:var(--teal);}
+  .stat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin:40px 0 36px;}
+  .stat-card{text-align:center;}
+  .stat-card img{width:110px;height:110px;object-fit:contain;margin:0 auto 12px;}
+  .stat-card .num{font-family:var(--font-rounded);font-weight:800;font-size:clamp(20px,2.6vw,26px);color:var(--navy);}
+  .stat-card .cap{font-weight:700;font-size:13px;color:var(--ink);}
+  .callout-head{
+    background:var(--navy);color:var(--white);font-family:var(--font-body);font-weight:800;
+    text-transform:uppercase;font-size:clamp(16px,2vw,20px);padding:14px 26px;border-radius:14px;
+    display:inline-block;margin-bottom:18px;
+  }
+  ul.check-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px;}
+  ul.check-list li{padding-left:22px;position:relative;font-size:15.5px;line-height:1.5;}
+  ul.check-list li::before{content:"";position:absolute;left:0;top:8px;width:8px;height:8px;border-radius:50%;background:var(--navy);}
+  ul.check-list b{color:var(--teal);}
+
+  /* ---------- CHECKLIST ---------- */
+  .checklist-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px 56px;margin-top:40px;}
+  .checklist-item{display:grid;grid-template-columns:36px 1fr;column-gap:18px;row-gap:4px;position:relative;}
+  .checklist-item .ghost-num{
+    font-family:var(--font-rounded);font-weight:800;color:var(--lime);font-size:clamp(24px,2.6vw,30px);line-height:1;
+    grid-row:1 / span 2;align-self:start;
+  }
+  .checklist-item h4{font-family:var(--font-body);font-weight:800;color:var(--teal);text-transform:uppercase;font-size:16px;margin:4px 0 6px;}
+  .checklist-item p{margin:0;font-size:14.5px;line-height:1.5;color:var(--ink);}
+
+  /* ---------- TWO CARDS ---------- */
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:36px;}
+  .rounded-card{border:2px solid var(--lime);border-radius:22px;padding:28px 26px 30px;}
+  .card-head{
+    background:var(--navy);color:var(--white);border-radius:40px;padding:12px 26px;
+    display:inline-block;font-weight:800;text-transform:uppercase;font-size:15px;margin-bottom:18px;
+  }
+  .card-head span{display:block;color:var(--lime);}
+  .rounded-card ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px;}
+  .rounded-card ul li{position:relative;padding-left:20px;font-weight:600;font-size:15px;line-height:1.4;}
+  .rounded-card ul li::before{content:"•";position:absolute;left:0;color:var(--navy);font-weight:800;}
+  .banner-navy{
+    background:var(--navy);color:var(--white);border-radius:18px;padding:26px 30px;
+    display:flex;gap:22px;align-items:center;margin-top:30px;
+  }
+  .banner-navy img{width:84px;flex-shrink:0;}
+  .banner-navy h4{font-family:var(--font-body);font-weight:800;text-transform:uppercase;color:var(--lime);font-size:18px;margin:0 0 8px;}
+  .banner-navy p{margin:0;font-size:14.5px;line-height:1.5;opacity:.95;}
+
+  /* ---------- NUMBERED ROW (retiro por tercero) ---------- */
+  .num-row{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin:40px 0;}
+  .num-row .card{text-align:left;}
+  .num-row .ghost-num{font-family:var(--font-rounded);font-weight:800;color:var(--lime);font-size:52px;line-height:1;}
+  .num-row h4{font-weight:800;text-transform:uppercase;font-size:15px;color:var(--navy);margin:4px 0 6px;}
+  .num-row p{margin:0;font-size:13.5px;color:var(--ink);line-height:1.4;}
+
+  /* ---------- STEP TIMELINE (tu mañana) ---------- */
+  .timeline{margin-top:36px;display:flex;flex-direction:column;gap:0;}
+  .timeline .step{display:grid;grid-template-columns:230px 1fr;gap:24px;padding:20px 0;border-bottom:1px solid rgba(30,92,150,.15);}
+  .timeline .step:last-child{border-bottom:none;}
+  .timeline h4{font-family:var(--font-body);font-weight:800;text-transform:uppercase;color:var(--teal);font-size:16px;margin:0;}
+  .timeline p{margin:0;font-size:15px;line-height:1.5;}
+
+  /* ---------- HORARIOS (navy, pill cards) ---------- */
+  .fish-pattern{position:absolute;right:-2%;bottom:-6%;width:46%;max-width:480px;opacity:.5;}
+  .time-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin:40px 0 44px;}
+  .time-pill{
+    display:flex;align-items:stretch;background:var(--white);border-radius:999px;overflow:hidden;
+    font-family:var(--font-rounded);font-weight:800;
+  }
+  .time-pill .dist{flex:1;display:flex;align-items:center;justify-content:center;color:var(--navy);font-size:30px;padding:14px 10px;}
+  .time-pill .dist small{display:block;font-family:var(--font-body);font-size:9px;font-weight:700;text-align:center;}
+  .time-pill .time{flex:1.3;display:flex;align-items:center;justify-content:center;background:var(--lime);color:var(--navy);font-size:24px;padding:14px 10px;}
+  .foot-note{font-size:16px;line-height:1.6;max-width:640px;}
+  .foot-note .hl{color:var(--lime);font-weight:800;}
+
+  /* ---------- SALIDA Y CORRALES ---------- */
+  .step5-row{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin:36px 0 42px;}
+  .step5-row .n{font-family:var(--font-rounded);font-weight:800;color:var(--lime);font-size:30px;}
+  .step5-row h5{font-weight:800;text-transform:uppercase;font-size:14px;color:var(--navy);margin:4px 0 2px;}
+  .step5-row p{margin:0;font-size:12.5px;color:var(--ink);}
+  .elite-card{
+    background:var(--navy);color:var(--white);border-radius:18px;padding:26px;
+    display:grid;grid-template-columns:140px 1fr;gap:24px;align-items:center;margin-bottom:36px;
+  }
+  .elite-card img{width:100%;}
+  .elite-card h4{font-family:var(--font-body);font-weight:800;text-transform:uppercase;font-size:19px;margin:0 0 10px;}
+  .elite-card .pill{margin-bottom:10px;}
+  .elite-card p{margin:0;font-size:14px;line-height:1.5;opacity:.95;}
+  .important-list{list-style:none;margin:16px 0 0;padding:0;display:flex;flex-direction:column;gap:10px;}
+  .important-list li{position:relative;padding-left:20px;font-weight:600;font-size:14.5px;color:var(--navy);line-height:1.45;}
+  .important-list li::before{content:"•";position:absolute;left:0;color:var(--teal);font-weight:800;}
+
+  /* ---------- ELEMENTOS DEL CORREDOR (navy) ---------- */
+  .elements-row{display:flex;flex-direction:column;gap:6px;margin:24px 0 32px;}
+  .elements-row .row{display:grid;grid-template-columns:180px 1fr;align-items:baseline;gap:18px;padding:8px 0;}
+  .elements-row .k{font-family:var(--font-rounded);font-weight:800;color:var(--lime);font-size:clamp(22px,2.6vw,30px);text-align:right;}
+  .elements-row .v{font-size:16px;line-height:1.4;}
+  .lime-card{background:var(--lime);color:var(--navy);border-radius:18px;padding:28px 30px;margin:20px 0 34px;}
+  .lime-card h4{font-family:var(--font-body);font-weight:800;text-transform:uppercase;font-size:19px;margin:0 0 10px;}
+  .lime-card p{margin:0 0 10px;font-size:14.5px;line-height:1.5;}
+  .lime-card .flow{font-weight:800;font-size:15px;}
+  .flow-line{font-size:15px;line-height:1.6;margin:14px 0;opacity:.95;}
+
+  /* ---------- PHOTO GRID (tu distancia y ruta) ---------- */
+  .photo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px 22px;margin:38px 0 34px;}
+  .photo-item img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:16px;}
+  .photo-item .d{font-family:var(--font-rounded);font-weight:800;font-size:28px;color:var(--teal);margin-top:10px;}
+  .photo-item .c{font-weight:700;font-size:13.5px;line-height:1.35;color:var(--navy);}
+  .shield-note{display:flex;gap:16px;align-items:center;margin-top:12px;}
+  .shield-note img{width:48px;flex-shrink:0;}
+  .shield-note p{margin:0;font-size:14.5px;line-height:1.5;}
+
+  /* ---------- DISTANCE DETAIL (navy pairs) ---------- */
+  .dist-detail{display:flex;flex-direction:column;gap:46px;margin-top:30px;}
+  .dist-block{display:grid;grid-template-columns:auto 1fr;column-gap:26px;row-gap:22px;align-items:start;}
+  .dist-block .big{font-family:var(--font-rounded);font-weight:800;font-size:clamp(44px,6vw,90px);line-height:.9;white-space:nowrap;}
+  .dist-block .tag{font-weight:800;text-transform:uppercase;font-size:15px;margin:6px 0 2px;}
+  .dist-block .tagline{font-weight:700;font-size:17px;text-transform:uppercase;line-height:1.2;}
+  .dist-block .body{grid-column:1 / -1;font-size:14.5px;line-height:1.55;margin-top:4px;opacity:.95;}
+  .mini-cols{grid-column:1 / -1;display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:8px;border-top:2px solid rgba(255,255,255,.18);padding-top:14px;}
+  .mini-cols .col{padding:0 18px;border-left:2px solid rgba(255,255,255,.25);}
+  .mini-cols .col:first-child{border-left:none;padding-left:0;}
+  .mini-cols .lab{font-weight:800;text-transform:uppercase;font-size:13px;margin-bottom:4px;}
+  .mini-cols .val{font-weight:700;font-size:16px;}
+  .mini-cols .sm{font-weight:500;font-size:11.5px;opacity:.85;}
+
+  /* ---------- RECORRIDOS OFICIALES (videos) ---------- */
+  .video-row{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin:34px 0;}
+  .video-card{text-align:center;}
+  .video-card .label{font-family:var(--font-rounded);font-weight:800;font-size:40px;margin-bottom:10px;}
+  .video-card video{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:16px;background:#0b2744;}
+  .video-card .btn{
+    display:inline-block;margin-top:14px;font-weight:800;text-transform:uppercase;font-size:14px;
+    padding:9px 29px;border-radius:999px;text-decoration:none;border:2px solid transparent;cursor:pointer;
+    transition:background .15s ease, color .15s ease, border-color .15s ease;
+  }
+  .video-card .btn.btn-lime{background:var(--lime);color:var(--navy);border-color:var(--lime);}
+  .video-card .btn.btn-navy{background:var(--navy);color:var(--white);border-color:var(--navy);}
+  .video-card .btn:hover{background:var(--white);color:#1E5C96;border-color:#1E5C96;}
+  .cert-banner{
+    background:var(--navy);color:var(--white);border-radius:18px;padding:30px;margin-top:26px;
+    display:grid;grid-template-columns:auto 1fr 1fr;gap:26px;align-items:center;
+  }
+  .cert-banner .cert-icon{width:70px;}
+  .cert-banner .pill.lime{position:absolute;}
+  .cert-title{position:absolute;top:-18px;left:50%;transform:translateX(-50%);}
+  .cert-col{text-align:left;}
+  .cert-col .num{font-family:var(--font-rounded);font-weight:800;font-size:28px;}
+  .cert-col .cap{font-weight:800;text-transform:uppercase;font-size:14px;color:var(--lime);margin:2px 0 10px;}
+  .cert-col .badge{display:inline-block;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.3);padding:6px 14px;border-radius:999px;font-size:12px;font-weight:700;}
+
+  /* ---------- REGLAS EN RUTA ---------- */
+  .rules-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 48px;margin-top:34px;}
+  .rules-grid .rule{padding:16px 0;border-bottom:1px solid rgba(30,92,150,.12);}
+  .rules-grid h5{font-weight:800;text-transform:uppercase;font-size:15.5px;color:var(--navy);margin:0 0 6px;}
+  .rules-grid p{margin:0;font-size:14px;line-height:1.5;}
+  .rules-grid{position:relative;}
+  .rules-divider{position:absolute;left:50%;top:0;bottom:0;width:3px;background:var(--lime);}
+
+  /* ---------- CORTES Y SEGURIDAD ---------- */
+  .cut-banner{background:var(--lime);color:var(--navy);border-radius:18px;padding:26px 30px;margin:30px 0;}
+  .cut-top{display:grid;grid-template-columns:90px 1fr auto;gap:20px;align-items:center;}
+  .cut-top img{width:100%;}
+  .cut-top .lab{font-weight:800;font-size:16px;}
+  .cut-hours{font-family:var(--font-rounded);font-weight:800;font-size:40px;}
+  .cut-hours .cap{display:block;font-family:var(--font-body);font-weight:700;font-size:11px;}
+  .cut-range{font-weight:800;font-size:17px;margin-top:4px;}
+  .cut-side{text-align:right;}
+  .cut-side .dist{font-family:var(--font-rounded);font-weight:800;font-size:22px;}
+  .cut-side .lab2{font-weight:700;font-size:12px;}
+  .cut-badge{display:inline-block;background:var(--navy);color:var(--white);padding:8px 18px;border-radius:999px;font-weight:800;margin-top:6px;}
+  .cut-footer{border-top:1px solid rgba(18,58,99,.2);margin-top:18px;padding-top:14px;font-size:13px;font-weight:600;text-align:center;}
+  .qa-block{margin-top:34px;}
+  .qa-block h4{font-family:var(--font-body);font-weight:800;text-transform:uppercase;font-size:20px;margin:0 0 10px;}
+  .qa-block h4 .accent{color:var(--lime);}
+  .qa-block p{font-size:14.5px;line-height:1.6;opacity:.95;}
+
+  /* ---------- WBGT ---------- */
+  .wbgt-row{display:flex;gap:22px;align-items:flex-start;margin:22px 0;}
+  .wbgt-dot{width:76px;height:76px;border-radius:50%;flex-shrink:0;}
+  .wbgt-row h4{font-family:var(--font-rounded);font-weight:800;font-size:30px;margin:0 0 2px;}
+  .wbgt-row .sub{font-weight:800;text-transform:uppercase;font-size:14.5px;color:var(--navy);margin-bottom:4px;}
+  .wbgt-row p{margin:0;font-size:14px;color:var(--ink);line-height:1.4;}
+  .rule-simple-tag{
+    display:inline-block;background:var(--teal);color:var(--white);padding:10px 24px;border-radius:999px;
+    font-weight:700;font-size:13.5px;letter-spacing:.03em;margin-top:18px;
+  }
+
+  /* ---------- RESULTADOS Y PREMIACIÓN ---------- */
+  .icon-pair{display:grid;grid-template-columns:1fr 1fr;gap:30px;margin:30px 0;}
+  .icon-pair .ip{text-align:center;}
+  .icon-pair .crop{width:120px;height:80px;margin:0 auto 14px;overflow:hidden;position:relative;}
+  .icon-pair .crop img{position:absolute;width:240px;max-width:none;}
+  .icon-pair .crop.gun img{top:0;left:0;}
+  .icon-pair .crop.chip img{top:0;left:-120px;}
+  .icon-pair .pill{margin-bottom:10px;}
+  .icon-pair p{margin:0;font-size:13.5px;font-weight:600;line-height:1.45;}
+  table.cat-table{width:100%;border-collapse:collapse;margin-top:18px;border:2px solid var(--navy);border-radius:10px;overflow:hidden;}
+  table.cat-table th{background:var(--lime);color:var(--navy);font-weight:800;text-transform:uppercase;font-size:13.5px;padding:12px 10px;border:1px solid var(--navy);}
+  table.cat-table td{padding:12px 10px;text-align:center;font-weight:700;font-size:14px;color:var(--navy);border:1px solid var(--navy);}
+  .table-note{font-size:12.5px;font-style:italic;margin-top:12px;opacity:.8;}
+
+  /* ---------- CIERRE ---------- */
+  .closing{color:var(--white);background-image:url('manual-corredor-assets/images/image43.avif');background-size:cover;background-position:center;}
+  .closing-top{display:grid;grid-template-columns:200px 1fr;gap:30px;align-items:center;margin:34px 0 40px;}
+  .closing-top img{width:100%;}
+  .closing-top p{font-size:15px;line-height:1.6;margin:0 0 14px;opacity:.95;}
+  .closing-top h2 + h2{margin-bottom:14px;}
+  .channels-row{display:grid;grid-template-columns:repeat(5,1fr);gap:18px;margin:30px 0 50px;padding-top:30px;border-top:2px solid rgba(255,255,255,.25);}
+  .channels-row .ch{text-align:center;}
+  .channels-row .crop{width:64px;height:64px;margin:0 auto 10px;overflow:hidden;position:relative;}
+  .channels-row .crop img{position:absolute;width:300%;max-width:none;}
+  .channels-row .c0 img{top:0;left:0;}
+  .channels-row .c1 img{top:0;left:-100%;}
+  .channels-row .c2 img{top:0;left:-200%;}
+  .channels-row .c3 img{top:-100%;left:0;}
+  .channels-row .c4 img{top:-100%;left:-100%;}
+  .channels-row h5{font-weight:800;text-transform:uppercase;font-size:12.5px;color:var(--lime);margin:0 0 4px;}
+  .channels-row p{margin:0;font-size:11px;line-height:1.3;word-break:break-word;}
+  .closing-final{text-align:center;padding-top:6px;}
+  .closing-final .small{font-weight:700;font-size:17px;text-transform:uppercase;}
+  .closing-final h3{font-size:clamp(32px,5.6vw,52px);color:var(--lime);margin:4px 0 18px;}
+  .closing-final p{font-size:15.5px;max-width:640px;margin:0 auto;line-height:1.6;}
+  .closing-disclaimer{margin-top:30px;font-size:12.5px;font-style:italic;text-align:center;opacity:.85;max-width:700px;margin-left:auto;margin-right:auto;}
+
+  @media (max-width: 860px){
+    section{padding:52px 0;}
+    .index-grid,.checklist-grid,.two-col,.num-row,.stat-row,.step5-row,.rules-grid,.icon-pair,.channels-row,.time-grid,.photo-grid{grid-template-columns:1fr 1fr;}
+    .num-row,.stat-row{grid-template-columns:1fr 1fr;}
+    .photo-grid{grid-template-columns:1fr 1fr;}
+    .channels-row{grid-template-columns:repeat(3,1fr);}
+    .dist-block{grid-template-columns:1fr;}
+    .elite-card{grid-template-columns:90px 1fr;}
+    .cert-banner{grid-template-columns:1fr;text-align:center;}
+    .video-row{grid-template-columns:1fr;}
+    .timeline .step{grid-template-columns:1fr;}
+    .closing-top{grid-template-columns:1fr;text-align:center;}
+    .mini-cols{grid-template-columns:1fr;}
+    .mini-cols .col{border-left:none;border-top:2px solid rgba(255,255,255,.2);padding-top:12px;margin-top:10px;}
+  }
+  @media (max-width: 560px){
+    .index-grid,.checklist-grid,.two-col,.step5-row,.photo-grid,.icon-pair{grid-template-columns:1fr;}
+    .rules-divider{display:none;}
+    .channels-row{grid-template-columns:1fr 1fr;}
+    .elite-card{grid-template-columns:1fr;text-align:center;}
+    .elite-card img{width:90px;margin:0 auto;}
+  }
+
+  /* ---------- DESKTOP SCALE ---------- */
+  @media (min-width:1280px){ .wrap{zoom:1.1;} }
+  @media (min-width:1600px){ .wrap{zoom:1.22;} }
+  @media (min-width:2200px){ .wrap{zoom:1.45;} }
+  @media (max-width:900px){
+    .hero{height:auto;min-height:92vh;padding:56px 0;}
+    .hero::before{width:100%;aspect-ratio:auto;background-size:cover;background-position:right bottom;-webkit-mask-image:none;mask-image:none;}
+  }
+
+  /* Index background covers the whole section */
+  .index-bg{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:cover;object-position:center;pointer-events:none;}
+
+  /* ---------- FLOATING BACK-TO-INDEX BUTTON ---------- */
+  .back-index{
+    position:fixed;top:20px;right:20px;z-index:99999;
+    display:inline-block;font-family:var(--font-body);font-weight:800;text-transform:uppercase;
+    font-size:14px;letter-spacing:.02em;line-height:1;padding:12px 24px;border-radius:999px;
+    background:#1E5C96;color:#fff;border:2px solid #1E5C96;text-decoration:none;cursor:pointer;
+    box-shadow:0 6px 18px rgba(0,0,0,.25);
+    transition:background .15s ease,color .15s ease,border-color .15s ease,opacity .2s ease,visibility .2s ease;
+  }
+  .back-index.is-hidden{opacity:0;visibility:hidden;pointer-events:none;}
+  .back-index:hover{background:#fff;color:#1E5C96;border-color:#1E5C96;}
+  @media (max-width:600px){ .back-index{top:12px;right:12px;font-size:12px;padding:10px 16px;} }
+</style>
+</head>
+<body>
+
+<a class="back-index" href="#indice">Volver al índice</a>
+
+<!-- 01 HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-logo">
+      <img src="manual-corredor-assets/icons-svg/image7.svg" alt="Maratón 7 Colores">
+      <div class="hero-logo-text">MARATÓN<br>7 COLORES</div>
+    </div>
+    <h1 class="hero-title">MANUAL<br><span class="line2">DEL CORREDOR</span></h1>
+    <div class="hero-divider">2.ª EDICIÓN · 2026</div>
+    <div class="hero-date">29 NOV 2026</div>
+    <div class="hero-location">
+      <span class="pill">SAN ANDRÉS ISLA · COLOMBIA</span>
+    </div>
+  </div>
+</section>
+
+<!-- 02 ÍNDICE -->
+<section class="bg-light" id="indice">
+  <img class="index-bg" src="manual-corredor-assets/images/image4.avif" alt="">
+  <div class="wrap" style="position:relative;z-index:2;">
+    <h2 class="title-xl">ÍNDICE</h2>
+    <p class="eyebrow">TODO LO QUE NECESITAS PARA TU CARRERA</p>
+    <div class="index-grid">
+      <div>
+        <a class="index-item" href="#sec-intro"><span class="index-num">00</span><span class="index-label">Introducción</span></a>
+        <a class="index-item" href="#sec-antes-viajar"><span class="index-num">02</span><span class="index-label">Antes de viajar</span></a>
+        <a class="index-item" href="#sec-expo-kit"><span class="index-num">03</span><span class="index-label">Festival 7 Colores y retiro del kit</span></a>
+        <a class="index-item" href="#sec-retiro-tercero"><span class="index-num">04</span><span class="index-label">Retiro por tercero</span></a>
+        <a class="index-item" href="#sec-horarios"><span class="index-num">05</span><span class="index-label">Horarios de salida</span></a>
+        <a class="index-item" href="#sec-manana"><span class="index-num">06</span><span class="index-label">Tu mañana de carrera</span></a>
+        <a class="index-item" href="#sec-salida-corrales"><span class="index-num">07</span><span class="index-label">Salida y corrales</span></a>
+      </div>
+      <div>
+        <a class="index-item" href="#sec-elementos"><span class="index-num">08</span><span class="index-label">Elementos del corredor</span></a>
+        <a class="index-item" href="#sec-distancia-ruta"><span class="index-num">09</span><span class="index-label">Tu distancia y ruta<small>42K · 32K · 21K · 10K · 5K · 2K</small></span></a>
+        <a class="index-item" href="#sec-recorridos"><span class="index-num">10</span><span class="index-label">Recorridos oficiales</span></a>
+        <a class="index-item" href="#sec-reglas-ruta"><span class="index-num">15</span><span class="index-label">Reglas en ruta</span></a>
+        <a class="index-item" href="#sec-cortes-seguridad"><span class="index-num">16</span><span class="index-label">Cortes y seguridad</span></a>
+        <a class="index-item" href="#sec-wbgt"><span class="index-num">17</span><span class="index-label">Protocolo WBGT</span></a>
+        <a class="index-item" href="#sec-resultados"><span class="index-num">18</span><span class="index-label">Resultados y premiación</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 INTRO -->
+<section class="bg-light" id="sec-intro">
+  <div class="wrap">
+    <svg class="chevron" viewBox="0 0 48 48" fill="none"><path d="M8 14l16 16 16-16" stroke="#CAED69" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <div class="intro-head">
+      <h2 class="title-xl" style="font-size:clamp(28px,4vw,38px);">TU CARRERA EMPIEZA ANTES DE LA</h2>
+      <h2 class="title-xl sub">SALIDA</h2>
+    </div>
+    <p class="lead">Este manual reúne la información esencial para vivir la segunda edición de la Maratón 7 Colores de forma segura, informada y organizada.</p>
+    <p class="lead">Léelo completo y consúltalo nuevamente durante la semana del evento: la información operativa puede actualizarse por razones de seguridad, logística o decisión de las autoridades.</p>
+
+    <div class="stat-row">
+      <div class="stat-card">
+        <img src="manual-corredor-assets/images/image8.avif" alt="">
+        <div class="num">29 NOV 2026</div>
+        <div class="cap">Fecha oficial</div>
+      </div>
+      <div class="stat-card">
+        <img src="manual-corredor-assets/images/image9.avif" alt="">
+        <div class="num">6 DISTANCIAS</div>
+        <div class="cap">42K·32K·21K·10K·5K·2K</div>
+      </div>
+      <div class="stat-card">
+        <img src="manual-corredor-assets/images/image10.avif" alt="">
+        <div class="num">4:30 A.M.</div>
+        <div class="cap">Primera salida: 42K</div>
+      </div>
+      <div class="stat-card">
+        <img src="manual-corredor-assets/images/image11.avif" alt="">
+        <div class="num">9:30 A.M.</div>
+        <div class="cap">Fin del cierre vial previsto</div>
+      </div>
+    </div>
+
+    <div class="callout-head">LO NUEVO / CLAVE EN 2026</div>
+    <ul class="check-list">
+      <li>Se incorpora la distancia <b>32K</b> — "La escala perfecta para la maratón"</li>
+      <li>Los 2K son exclusivamente infantil para participantes de <b>7 a 15 años</b></li>
+      <li><b>Dorsal + chip + manilla</b> son los tres elementos de identificación del corredor</li>
+      <li>La medalla se entrega <b>únicamente</b> a quien complete su distancia y porte los elementos oficiales requeridos</li>
+      <li>El reglamento establece <b>corrales, olas de salida, barrido progresivo y cortes operativos</b></li>
+    </ul>
+  </div>
+</section>
+
+<!-- 04 CHECKLIST -->
+<section class="bg-light" id="sec-antes-viajar">
+  <div class="wrap">
+    <p class="eyebrow">ANTES DE VIAJAR:</p>
+    <h2 class="title-xl">TU CHECKLIST</h2>
+    <p class="lead" style="margin-top:12px;">Seis puntos que debes resolver antes de llegar a la línea de salida.</p>
+
+    <div class="checklist-grid">
+      <div class="checklist-item">
+        <span class="ghost-num">01</span>
+        <div>
+          <h4>Revisa tu inscripción</h4>
+          <p>Confirma tu nombre, distancia y datos personales antes de viajar. Recuerda: tu inscripción, dorsal, chip y manilla son personales e intransferibles.</p>
+        </div>
+      </div>
+      <div class="checklist-item">
+        <span class="ghost-num">04</span>
+        <div>
+          <h4>Retira tu kit a tiempo</h4>
+          <p>Recoge tu kit únicamente durante las fechas y horarios oficiales de la Expo. No habrá entrega de kits el día de la carrera ni fuera de los horarios establecidos.</p>
+        </div>
+      </div>
+      <div class="checklist-item">
+        <span class="ghost-num">02</span>
+        <div>
+          <h4>Cuida tu salud</h4>
+          <p>Corre únicamente si estás preparado y en condiciones físicas y de salud adecuadas. Si tu condición cambia antes de la carrera, no tomes la salida y busca orientación médica. Tu seguridad está primero.</p>
+        </div>
+      </div>
+      <div class="checklist-item">
+        <span class="ghost-num">05</span>
+        <div>
+          <h4>Ten presente tu horario</h4>
+          <p>Llega a la zona de partida con mínimo 30 minutos de anticipación.</p>
+        </div>
+      </div>
+      <div class="checklist-item">
+        <span class="ghost-num">03</span>
+        <div>
+          <h4>Planea tu llegada</h4>
+          <p>Consulta antes de viajar los requisitos vigentes de ingreso a San Andrés y organiza con anticipación vuelos, alojamiento y traslados. Los requisitos, controles, tasas y autorizaciones dependen de las autoridades competentes y son responsabilidad de cada viajero.</p>
+        </div>
+      </div>
+      <div class="checklist-item">
+        <span class="ghost-num">06</span>
+        <div>
+          <h4>Lee las reglas</h4>
+          <p>Tu dorsal debe ir visible al frente durante toda la carrera. La inscripción, dorsal, chip y manilla son personales e intransferibles. Consulta el reglamento completo en fundacion7colores.org/terminos-y-condiciones/</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 EXPO Y RETIRO DEL KIT -->
+<section class="bg-light" id="sec-expo-kit">
+  <div class="wrap">
+    <h2 class="title-xl">EXPO <span class="accent">Y</span></h2>
+    <h2 class="title-xl">RETIRO DEL KIT</h2>
+    <p class="lead" style="margin-top:12px;"><b style="color:var(--teal)">27 Y 28 DE NOVIEMBRE</b> &nbsp;·&nbsp; <b>9:00 AM - 6:00 PM</b></p>
+
+    <div class="two-col">
+      <div class="rounded-card">
+        <div class="card-head">TODO EMPIEZA EN <span>LA EXPO</span></div>
+        <p style="font-weight:600;font-size:14.5px;">Para reclamar tu kit personalmente presenta:</p>
+        <ul>
+          <li>Documento de identidad original.</li>
+          <li>Comprobante de inscripción.</li>
+        </ul>
+      </div>
+      <div class="rounded-card">
+        <div class="card-head">EL KIT DE CARRERA <span>INCLUYE</span></div>
+        <ul>
+          <li>Dorsal con chip de cronometraje.</li>
+          <li>Camiseta oficial.</li>
+          <li>Manilla oficial y demás elementos dispuestos por la Organización.</li>
+          <li>Información operativa / manual del corredor.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="banner-navy">
+      <img src="manual-corredor-assets/images/image13.avif" alt="">
+      <div>
+        <h4>No habrá entrega el día de la carrera</h4>
+        <p>Quien no se presente dentro del horario oficial no podrá participar, no tendrá derecho a recibir el kit y no tendrá derecho a reembolso. La Organización tampoco realiza envíos posteriores a ningún otro lugar.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 RETIRO POR TERCERO -->
+<section class="bg-light" id="sec-retiro-tercero">
+  <div class="wrap">
+    <h2 class="title-xl" style="font-size:clamp(28px,4.4vw,42px);">¿OTRA PERSONA</h2>
+    <h2 class="title-xl accent-wrap" style="color:var(--teal);font-size:clamp(28px,4.4vw,42px);">RECOGERÁ TU KIT?</h2>
+    <p class="lead" style="margin-top:14px;">Si es posible, pero únicamente para el retiro físico. La autorización no transfiere la inscripción, el dorsal, el chip, ni la manilla.</p>
+
+    <div class="num-row">
+      <div class="card"><div class="ghost-num">01</div><h4>Autorización</h4><p>Formato oficial diligenciado y firmado por el participante.</p></div>
+      <div class="card"><div class="ghost-num">02</div><h4>Copia del documento</h4><p>Del participante inscrito.</p></div>
+      <div class="card"><div class="ghost-num">03</div><h4>Documento original</h4><p>De la persona autorizada.</p></div>
+      <div class="card"><div class="ghost-num">04</div><h4>Comprobante</h4><p>Inscripción o número de pedido, cuando sea requerido.</p></div>
+    </div>
+
+    <div class="banner-navy">
+      <img src="manual-corredor-assets/images/image13.avif" alt="">
+      <div>
+        <h4>Descarga el formato oficial</h4>
+        <p>Está publicado por la Fundación 7 Colores en su sitio web. El documento establece expresamente que la persona autorizada no puede usar el dorsal, chip o manilla ni participar en la carrera en nombre del titular.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 TU MAÑANA PASO A PASO -->
+<section class="bg-light" id="sec-manana">
+  <img class="watermark-fish" src="manual-corredor-assets/images/image14.avif" alt="">
+  <div class="wrap" style="position:relative;z-index:2;">
+    <h2 class="title-xl">TU MAÑANA,</h2>
+    <h2 class="title-xl accent-wrap" style="color:var(--teal);">PASO A PASO</h2>
+    <p class="lead" style="margin-top:12px;">Sigue estas recomendaciones para vivir una gran experiencia desde el inicio.</p>
+
+    <div class="timeline">
+      <div class="step"><h4>Antes de salir</h4><p>Desayuna y prepárate según tu rutina. No estrenes calzado, nutrición ni equipamiento.</p></div>
+      <div class="step"><h4>30 minutos antes</h4><p>Ubícate en la zona de partida de tu distancia con dorsal visible y manilla oficial.</p></div>
+      <div class="step"><h4>Llamado a corrales</h4><p>Sigue megafonía, señalización y las indicaciones del personal de organización.</p></div>
+      <div class="step"><h4>En ruta</h4><p>Usa los puntos oficiales de hidratación y atención. Si abandonas, informa al equipo oficial. Está prohibida la entrega de hidratación o alimentación externa por parte de terceros.</p></div>
+      <div class="step"><h4>Meta</h4><p>Mantén dorsal, chip y manilla. Son requeridos para control y entrega de medalla.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 08 HORARIOS DE SALIDA -->
+<section class="bg-navy" id="sec-horarios">
+  <img class="fish-pattern" src="manual-corredor-assets/images/image15.avif" alt="">
+  <div class="wrap" style="position:relative;z-index:2;">
+    <h2 class="title-xl on-navy">HORARIOS DE</h2>
+    <h2 class="title-xl on-navy"><span class="accent">SALIDA</span></h2>
+    <p class="lead" style="margin-top:10px;">Domingo, 29 de noviembre 2026</p>
+
+    <div class="time-grid">
+      <div class="time-pill"><span class="dist">42K</span><span class="time">4:30 AM</span></div>
+      <div class="time-pill"><span class="dist">32K</span><span class="time">4:40 AM</span></div>
+      <div class="time-pill"><span class="dist">21K</span><span class="time">5:30 AM</span></div>
+      <div class="time-pill"><span class="dist">10K</span><span class="time">5:40 AM</span></div>
+      <div class="time-pill"><span class="dist">5K</span><span class="time">6:00 AM</span></div>
+      <div class="time-pill"><span class="dist">2K<small>INFANTIL</small></span><span class="time">7:30 AM</span></div>
+    </div>
+
+    <p class="foot-note">Llega a la zona de partida al menos <span class="hl">30 minutos</span> antes de tu hora de salida.</p>
+    <p class="foot-note">Salir en un horario distinto al asignado es causal de <span class="hl">descalificación.</span></p>
+  </div>
+</section>
+
+<!-- 09 SALIDA Y CORRALES -->
+<section class="bg-light" id="sec-salida-corrales">
+  <div class="wrap">
+    <p class="eyebrow">42K + 21K</p>
+    <div class="step5-row">
+      <div><div class="n">01</div><h5>Llega</h5><p>Con antelación</p></div>
+      <div><div class="n">02</div><h5>Identifícate</h5><p>Dorsal visible</p></div>
+      <div><div class="n">03</div><h5>Ubícate</h5><p>Corral / ola</p></div>
+      <div><div class="n">04</div><h5>Espera</h5><p>Llamado oficial</p></div>
+      <div><div class="n">05</div><h5>Corre</h5><p>Solo a tu hora</p></div>
+    </div>
+
+    <p class="eyebrow" style="margin-top:28px;">ENTRA AL CORRAL</p>
+    <h2 class="title-xl" style="font-size:clamp(30px,4.6vw,44px);">CORRECTO</h2>
+    <p class="lead" style="margin-top:10px;">Las salidas se organizarán por corrales según <b>tiempos objetivos</b> y por <b>olas</b> para mejorar el flujo y la seguridad.</p>
+    <p class="lead">El acceso requiere <b>dorsal visible</b> y la verificación que defina la Organización.</p>
+
+    <div class="elite-card" style="margin-top:30px;">
+      <img src="manual-corredor-assets/images/image17.avif" alt="Atletas élite">
+      <div>
+        <h4>Atletas élite</h4>
+        <span class="pill lime">42K + 21K</span>
+        <p>Las categorías Élite de 42K y 21K se ubicarán en la parte delantera de su respectiva distancia para su identificación y confirmación de su participación.</p>
+      </div>
+    </div>
+
+    <h3 style="font-family:var(--font-body);font-weight:800;text-transform:uppercase;font-size:20px;color:var(--navy);margin-top:30px;">Importante:</h3>
+    <ul class="important-list">
+      <li>No saltes vallas, ni ingreses por accesos no habilitados.</li>
+      <li>Sigue en todo momento la señalización y las instrucciones de jueces, seguridad y logística.</li>
+      <li>No está permitido cambiar de dorsal, suplantar a otro corredor, ni alterar el chip.</li>
+      <li><b>Estas acciones son causal de descalificación inmediata y prohibición de participación futura.</b></li>
+    </ul>
+  </div>
+</section>
+
+<!-- 10 ELEMENTOS DEL CORREDOR -->
+<section class="bg-navy-pattern" id="sec-elementos">
+  <div class="wrap" style="position:relative;z-index:2;">
+    <h2 class="title-xl on-navy">3 ELEMENTOS</h2>
+    <h2 class="title-xl on-navy"><span class="accent">1 CORREDOR</span></h2>
+    <p class="lead" style="margin:10px 0 0;">Dorsal + Chip + Manilla oficial</p>
+
+    <div class="elements-row">
+      <div class="row"><span class="k">DORSAL:</span><span class="v">Visible al frente, sin enmendaduras.</span></div>
+      <div class="row"><span class="k">CHIP:</span><span class="v">No manipular, retirar, ni intercambiar.</span></div>
+      <div class="row"><span class="k">MANILLA:</span><span class="v">Debe portarse durante todo el evento.</span></div>
+    </div>
+
+    <div class="lime-card">
+      <h4>Tu medalla depende de esto</h4>
+      <p>La medalla se entrega únicamente a corredores oficialmente inscritos que completen válidamente su distancia y puedan acreditar al llegar a meta:</p>
+      <p class="flow">Dorsal + Chip + Manilla oficial &nbsp;→&nbsp; Medalla</p>
+      <p>La medalla es personal y no puede ser reclamada por acompañantes, espectadores ni terceros.</p>
+    </div>
+
+    <h3 style="font-family:var(--font-body);font-weight:800;text-transform:uppercase;font-size:20px;"><span class="accent" style="color:var(--lime)">Después de cruzar</span><br>la meta</h3>
+    <p class="flow-line">Cruza → sigue el flujo → conserva tus elementos → recibe tu medalla → ingresa a recuperación.</p>
+    <p class="flow-line" style="font-weight:700;">No retires tu dorsal, chip o manilla antes de finalizar el proceso de llegada.</p>
+  </div>
+</section>
+
+<!-- 11 TU DISTANCIA Y RUTA -->
+<section class="bg-light" id="sec-distancia-ruta">
+  <div class="wrap">
+    <h2 class="title-xl">ELIGE TU RETO</h2>
+    <h2 class="title-xl accent-wrap" style="color:var(--teal);">CONOCE TU RUTA</h2>
+    <p class="lead" style="margin-top:12px;">Seis circuitos cronometrados · Todos con <b>hidratación</b> y <b>atención médica</b></p>
+
+    <div class="photo-grid">
+      <div class="photo-item"><img src="manual-corredor-assets/images/image22.avif" alt="42K"><div class="d">42K</div><div class="c">Maratón completa · corre para hacer historia</div></div>
+      <div class="photo-item"><img src="manual-corredor-assets/images/image23.avif" alt="32K"><div class="d">32K</div><div class="c">La escala perfecta para la maratón</div></div>
+      <div class="photo-item"><img src="manual-corredor-assets/images/image24.avif" alt="21K"><div class="d">21K</div><div class="c">Un reto con vistas al paraíso</div></div>
+      <div class="photo-item"><img src="manual-corredor-assets/images/image25.avif" alt="10K"><div class="d">10K</div><div class="c">El desafío perfecto</div></div>
+      <div class="photo-item"><img src="manual-corredor-assets/images/image26.avif" alt="5K"><div class="d">5K</div><div class="c">Corre y disfruta la magia del Caribe</div></div>
+      <div class="photo-item"><img src="manual-corredor-assets/images/image27.avif" alt="2K"><div class="d">2K</div><div class="c">Haz historia desde pequeño</div></div>
+    </div>
+
+    <div class="shield-note">
+      <img src="manual-corredor-assets/images/image13.avif" alt="">
+      <p>Los mapas y altimetrías oficiales 2026 deberán consultarse en los canales oficiales de la Organización una vez publicados.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 12 2K Y 5K -->
+<section class="bg-navy-pattern">
+  <div class="wrap" style="position:relative;z-index:2;">
+    <h2 class="title-xl on-navy"><span style="color:var(--lime)">2K</span> y <span style="color:var(--teal)">5K</span></h2>
+    <p style="font-family:var(--font-body);font-weight:400;font-size:clamp(20px,3vw,28px);text-transform:uppercase;margin:14px 0 0;">Conoce<br><b>tu distancia</b></p>
+
+    <div class="dist-detail">
+      <div class="dist-block">
+        <div class="big" style="color:var(--lime);">2K</div>
+        <div>
+          <div class="tag" style="color:var(--lime)">Infantil</div>
+          <div class="tagline">Haz historia desde pequeño.</div>
+        </div>
+        <div class="mini-cols">
+          <div class="col"><div class="lab" style="color:var(--lime)">Recorrido <span class="sm">aproximadamente</span></div><div class="val">1,2 Km de ida<br>800 m de regreso</div></div>
+          <div class="col"><div class="lab" style="color:var(--lime)">Edad</div><div class="val">7 a 15 años</div></div>
+          <div class="col"><div class="lab" style="color:var(--lime)">Clasificación</div><div class="val">Niñas y Niños</div></div>
+        </div>
+        <p class="body">Los adultos no pueden correr el circuito; acompañan hasta la salida y se reencuentran después de la meta.</p>
+      </div>
+
+      <div class="dist-block">
+        <div class="big" style="color:var(--teal);">5K</div>
+        <div>
+          <div class="tag" style="color:var(--teal)">Corre y disfruta</div>
+          <div class="tagline">La magia del Caribe.</div>
+        </div>
+        <div class="mini-cols">
+          <div class="col"><div class="lab" style="color:var(--teal)">Recorrido <span class="sm">aproximadamente</span></div><div class="val">2,7 Km de ida<br>2,3 Km de regreso</div></div>
+          <div class="col"><div class="lab" style="color:var(--teal)">Edad</div><div class="val">Desde 16 años</div></div>
+          <div class="col"><div class="lab" style="color:var(--teal)">Excepción</div><div class="val">10 a 15 años con autorización del responsable</div></div>
+        </div>
+        <p class="body">Para clasificación/premiación, el reglamento los incluye excepcionalmente en Mayores, con clasificación independiente para Hombres y Mujeres.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 13 10K Y 21K -->
+<section class="bg-navy-pattern">
+  <div class="wrap" style="position:relative;z-index:2;">
+    <h2 class="title-xl on-navy"><span style="color:var(--lime)">10K</span> y <span style="color:var(--teal)">21K</span></h2>
+    <p style="font-family:var(--font-body);font-weight:700;font-size:clamp(20px,3vw,28px);text-transform:uppercase;margin:14px 0 0;">El desafío perfecto</p>
+
+    <div class="dist-detail">
+      <div class="dist-block">
+        <div class="big" style="color:var(--lime);">10K</div>
+        <div>
+          <div class="tag" style="color:var(--lime)">Características</div>
+          <div class="tagline" style="font-size:14px;font-weight:500;text-transform:none;">Trayecto costero para quienes buscan avanzar desde distancias cortas y correr con ritmo controlado.</div>
+        </div>
+        <div class="mini-cols">
+          <div class="col"><div class="lab" style="color:var(--lime)">Recorrido</div><div class="val">5,2 Km de ida<br>4,8 Km de regreso</div></div>
+          <div class="col"><div class="lab" style="color:var(--lime)">Salida oficial</div><div class="val">5:40 A.M.</div></div>
+        </div>
+      </div>
+
+      <div class="dist-block">
+        <div class="big" style="color:var(--teal);">21K</div>
+        <div>
+          <div class="tag" style="color:var(--teal)">Media maratón</div>
+          <div class="tagline">Un reto con vistas al paraíso.</div>
+        </div>
+        <div class="mini-cols">
+          <div class="col"><div class="lab" style="color:var(--teal)">Recorrido <span class="sm">aproximadamente</span></div><div class="val">10,5 Km de ida<br>10,5 Km de regreso</div></div>
+          <div class="col"><div class="lab" style="color:var(--teal)">Salida oficial</div><div class="val">5:30 A.M.</div></div>
+        </div>
+        <p class="body">Distancia certificada internacionalmente por World Athletics y AIMS. Medio Maratón oficial: 21,0975 km. Recorrido de ida y regreso junto al paisaje de San Andrés. Cronometraje electrónico y clasificación oficial.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 14 32K Y 42K -->
+<section class="bg-navy-pattern">
+  <div class="wrap" style="position:relative;z-index:2;">
+    <h2 class="title-xl on-navy"><span style="color:var(--lime)">32K</span> y <span style="color:var(--teal)">42K</span></h2>
+
+    <div class="dist-detail">
+      <div class="dist-block">
+        <div class="big" style="color:var(--lime);">32K</div>
+        <div>
+          <div class="tag" style="color:var(--lime)">Nueva distancia 2026</div>
+          <div class="tagline">La escala perfecta para la maratón.</div>
+        </div>
+        <p class="body">Recorrido aproximado por el perímetro de la isla de San Andrés, en sentido horario, por sus vías costeras. Una distancia para quienes buscan un reto superior al 21K antes de enfrentarse a la maratón.</p>
+        <div class="mini-cols">
+          <div class="col"><div class="lab" style="color:var(--lime)">Recorrido</div><div class="val">≈ 32 KM</div><div class="sm">Vuelta completa al perímetro de San Andrés.</div></div>
+          <div class="col"><div class="lab" style="color:var(--lime)">Salida oficial</div><div class="val">4:40 A.M.</div></div>
+          <div class="col"><div class="lab" style="color:var(--lime)">Categoría</div><div class="val">Mayores · 16-39</div><div class="sm">Hombres · Mujeres</div></div>
+        </div>
+      </div>
+
+      <div class="dist-block">
+        <div class="big" style="color:var(--teal);">42K</div>
+        <div>
+          <div class="tag" style="color:var(--teal)">Maratón completa</div>
+          <div class="tagline">Corre para hacer historia.</div>
+        </div>
+        <p class="body">El recorrido completa primero el circuito perimetral de aproximadamente 32 km y continúa con un tramo adicional de ida y regreso para completar la distancia oficial. = 32 KM del perímetro de la isla + 5 KM ida + 5 KM regreso.</p>
+        <div class="mini-cols">
+          <div class="col"><div class="lab" style="color:var(--teal)">Total oficial</div><div class="val">42,195 km</div></div>
+          <div class="col"><div class="lab" style="color:var(--teal)">Salida oficial</div><div class="val">4:30 A.M.</div></div>
+          <div class="col"><div class="lab" style="color:var(--teal)">Certificación</div><div class="val" style="font-size:13px;">Maratón certificada internacionalmente por World Athletics y AIMS.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 15 RECORRIDOS 2K-5K -->
+<section class="bg-light" id="sec-recorridos">
+  <div class="wrap">
+    <p class="eyebrow">CONOCE TU RECORRIDO</p>
+    <h2 class="title-xl" style="font-size:clamp(28px,4.4vw,40px);">ANTES DE CORRERLO</h2>
+    <p class="lead" style="margin-top:10px;">Revisa el mapa y la altimetría oficial de tu distancia. Identifica previamente salida, retorno, puntos clave del recorrido y llegada.</p>
+    <p class="eyebrow" style="margin-top:14px;color:var(--navy);font-weight:800;">SEIS DISTANCIAS · UNA ISLA</p>
+
+    <div class="video-row">
+      <div class="video-card">
+        <div class="label" style="color:var(--lime-deep)">2K</div>
+        <video src="manual-corredor-assets/videos/VAHZNZnTcDM.mp4?v=2" controls muted playsinline></video>
+        <a class="btn btn-lime" href="https://www.fundacion7colores.org/recorridos-maraton-7-colores/?ruta=2K" target="_blank" rel="noopener">Ver detalles</a>
+      </div>
+      <div class="video-card">
+        <div class="label" style="color:var(--navy)">5K</div>
+        <video src="manual-corredor-assets/videos/VAHZNVGF1A8.mp4?v=2" controls muted playsinline></video>
+        <a class="btn btn-navy" href="https://www.fundacion7colores.org/recorridos-maraton-7-colores/?ruta=5K" target="_blank" rel="noopener">Ver detalles</a>
+      </div>
+    </div>
+
+    <div class="cert-banner">
+      <img class="cert-icon" src="manual-corredor-assets/images/image28.avif" alt="Certificaciones">
+      <div class="cert-col">
+        <div class="num">42,195 KM</div>
+        <div class="cap">Maratón</div>
+        <span class="badge">CERTIFICADO N.º 067</span>
+      </div>
+      <div class="cert-col">
+        <div class="num">21,0975 KM</div>
+        <div class="cap">Media maratón</div>
+        <span class="badge">CERTIFICADO N.º 068</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 16 RECORRIDOS 10K-21K -->
+<section class="bg-light">
+  <div class="wrap">
+    <p class="eyebrow">CERTIFICACIONES</p>
+    <div class="video-row">
+      <div class="video-card">
+        <div class="label" style="color:var(--lime-deep)">10K</div>
+        <video src="manual-corredor-assets/videos/VAHZNQBrVeY.mp4" controls muted playsinline></video>
+        <a class="btn btn-lime" href="https://www.fundacion7colores.org/recorridos-maraton-7-colores/?ruta=10K" target="_blank" rel="noopener">Ver detalles</a>
+      </div>
+      <div class="video-card">
+        <div class="label" style="color:var(--navy)">21K</div>
+        <video src="manual-corredor-assets/videos/VAHZNXBsIGc.mp4" controls muted playsinline></video>
+        <a class="btn btn-navy" href="https://www.fundacion7colores.org/recorridos-maraton-7-colores/?ruta=21K" target="_blank" rel="noopener">Ver detalles</a>
+      </div>
+    </div>
+
+    <div class="cert-banner">
+      <img class="cert-icon" src="manual-corredor-assets/images/image28.avif" alt="Certificaciones">
+      <div class="cert-col">
+        <div class="num">42,195 KM</div>
+        <div class="cap">Maratón</div>
+        <span class="badge">CERTIFICADO N.º 067</span>
+      </div>
+      <div class="cert-col">
+        <div class="num">21,0975 KM</div>
+        <div class="cap">Media maratón</div>
+        <span class="badge">CERTIFICADO N.º 068</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 17 RECORRIDOS 32K-42K -->
+<section class="bg-light">
+  <div class="wrap">
+    <p class="eyebrow">CERTIFICACIONES</p>
+    <div class="video-row">
+      <div class="video-card">
+        <div class="label" style="color:var(--lime-deep)">32K</div>
+        <video src="manual-corredor-assets/videos/VAHZNTrLEFg.mp4" controls muted playsinline></video>
+        <a class="btn btn-lime" href="https://www.fundacion7colores.org/recorridos-maraton-7-colores/?ruta=32K" target="_blank" rel="noopener">Ver detalles</a>
+      </div>
+      <div class="video-card">
+        <div class="label" style="color:var(--navy)">42K</div>
+        <video src="manual-corredor-assets/videos/VAHZNZ0qy2U.mp4" controls muted playsinline></video>
+        <a class="btn btn-navy" href="https://www.fundacion7colores.org/recorridos-maraton-7-colores/?ruta=42K" target="_blank" rel="noopener">Ver detalles</a>
+      </div>
+    </div>
+
+    <div class="cert-banner">
+      <img class="cert-icon" src="manual-corredor-assets/images/image28.avif" alt="Certificaciones">
+      <div class="cert-col">
+        <div class="num">42,195 KM</div>
+        <div class="cap">Maratón</div>
+        <span class="badge">CERTIFICADO N.º 067</span>
+      </div>
+      <div class="cert-col">
+        <div class="num">21,0975 KM</div>
+        <div class="cap">Media maratón</div>
+        <span class="badge">CERTIFICADO N.º 068</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 18 REGLAS EN RUTA -->
+<section class="bg-light" id="sec-reglas-ruta">
+  <div class="wrap">
+    <h2 class="title-xl">EN RUTA:</h2>
+    <h2 class="title-xl accent-wrap" style="color:var(--teal);font-size:clamp(28px,4vw,38px);">SANCIONES</h2>
+    <p class="lead" style="margin-top:12px;">El fraude, la suplantación, la manipulación de tiempos, los cortes de recorrido o las agresiones al personal pueden producir descalificación y veto de por vida en competencias organizadas por la Fundación 7 Colores, según el reglamento 2026.</p>
+
+    <p class="eyebrow" style="color:var(--navy);font-weight:800;margin-top:26px;">10 REGLAS QUE DEBES SABER</p>
+    <div class="rules-grid">
+      <div class="rules-divider"></div>
+      <div>
+        <div class="rule"><h5>Dorsal visible</h5><p>Llévalo siempre al frente. No lo alteres, intercambies ni cubras.</p></div>
+        <div class="rule"><h5>Recorrido oficial</h5><p>Correr únicamente la ruta de tu distancia. Los cortes de ruta o atajos son causal de descalificación.</p></div>
+        <div class="rule"><h5>Hidratación oficial</h5><p>Utiliza los puntos oficiales de hidratación y abastecimiento. No está permitida la entrega externa de hidratación o alimentación por terceros a corredores en movimiento.</p></div>
+        <div class="rule"><h5>Sin ventaja externa</h5><p>No recibas asistencia externa que pueda darte una ventaja deportiva.</p></div>
+        <div class="rule"><h5>Sin acompañamiento</h5><p>No puedes ser acompañado en bicicleta, patines, scooter, motobicicleta, automóvil ni otro vehículo.</p></div>
+      </div>
+      <div>
+        <div class="rule"><h5>Sin mascotas</h5><p>No está permitido correr acompañado de mascotas.</p></div>
+        <div class="rule"><h5>Sigue las indicaciones</h5><p>Atiende siempre a jueces, logística, seguridad y personal médico.</p></div>
+        <div class="rule"><h5>Auriculares</h5><p>Permitidos bajo tu responsabilidad. Mantén la capacidad de escuchar instrucciones y lo que ocurre a tu alrededor.</p></div>
+        <div class="rule"><h5>Si abandonas</h5><p>Informa a un integrante del equipo oficial.</p></div>
+        <div class="rule"><h5>Cuida a San Andrés</h5><p>Deposita los residuos únicamente en los lugares habilitados. Mantengamos la isla limpia para que todos podamos seguir disfrutándola.</p></div>
+      </div>
+    </div>
+
+    <div class="banner-navy" style="margin-top:34px;">
+      <img src="manual-corredor-assets/images/image13.avif" alt="">
+      <div>
+        <h4>Sanciones</h4>
+        <p>El fraude, la suplantación, la manipulación de tiempos, los cortes de recorrido o las agresiones al personal pueden producir <b>descalificación</b> y <b>veto de por vida</b> en competencias organizadas por la Fundación 7 Colores, según el reglamento 2026.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 19 CORTES Y SEGURIDAD -->
+<section class="bg-navy" id="sec-cortes-seguridad">
+  <img class="fish-pattern" src="manual-corredor-assets/images/image15.avif" alt="">
+  <div class="wrap" style="position:relative;z-index:2;">
+    <h2 class="title-xl on-navy">CORTES</h2>
+    <h2 class="title-xl on-navy"><span class="accent">Y SEGURIDAD</span></h2>
+    <p class="lead" style="margin-top:10px;">Tu seguridad es nuestra prioridad. Conoce los tiempos de corte y qué hacer en cada situación.</p>
+
+    <div class="cut-banner">
+      <div class="cut-top">
+        <img src="manual-corredor-assets/images/image41.avif" alt="">
+        <div>
+          <span class="pill" style="background:var(--navy);color:var(--white);">CORTE OPERATIVO</span>
+          <div class="cut-hours">5 HORAS<span class="cap">DURACIÓN MÁXIMA PREVISTA DEL EVENTO</span></div>
+          <div class="cut-range">4:30 A.M. → 9:30 A.M.</div>
+        </div>
+        <div class="cut-side">
+          <div class="dist">42K y 32K</div>
+          <div class="lab2">PUNTO DE CORTE ANTES DE LAS</div>
+          <span class="cut-badge">8:30 A.M.</span>
+        </div>
+      </div>
+      <div class="cut-footer">El sector exacto será informado por la Organización. Quien no cumpla el corte podrá ser retirado del circuito.</div>
+    </div>
+
+    <div class="qa-block">
+      <h4>¿QUÉ PASA SI NO <span class="accent">CUMPLES UN CORTE?</span></h4>
+      <p>La Organización realizará un barrido progresivo del recorrido y la vía será reabierta por segmentos. Si superas un corte operativo deberás abandonar el circuito oficial o continuar por fuera de competencia, sin servicios oficiales ni clasificación.</p>
+    </div>
+
+    <div class="qa-block">
+      <h4>SI NECESITAS AYUDA, <span class="accent">PÍDELA</span></h4>
+      <p>La carrera contará con atención médica, ambulancias, personal de primeros auxilios y equipos de respuesta en ruta y meta. Si tú u otro corredor presentan una emergencia, informa inmediatamente al personal de la Organización, Salud o Seguridad.</p>
+      <p>La seguridad está primero. Jueces y personal oficial podrán retirar del recorrido a un corredor cuando exista un riesgo médico evidente o una situación que comprometa su seguridad.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 20 PROTOCOLO WBGT -->
+<section class="bg-light" id="sec-wbgt">
+  <div class="wrap">
+    <h2 class="title-xl" style="font-size:clamp(28px,4.2vw,40px);">CALOR, HUMEDAD</h2>
+    <h2 class="title-xl accent-wrap" style="font-size:clamp(28px,4.2vw,40px);">Y PROTOCOLO WBGT</h2>
+    <p class="lead" style="margin-top:12px;">El reglamento 2026 prevé monitoreo WBGT para valorar el estrés térmico y escalar recomendaciones operativas.</p>
+    <p class="lead">La Organización podrá ajustar indicaciones o medidas de seguridad según las condiciones reales del día.</p>
+
+    <div style="margin-top:30px;">
+      <div class="wbgt-row">
+        <div class="wbgt-dot" style="background:var(--green);"></div>
+        <div><h4 style="color:var(--green);">VERDE</h4><div class="sub">Condiciones favorables</div><p>Continúa según lo previsto y mantente atento a las indicaciones oficiales.</p></div>
+      </div>
+      <div class="wbgt-row">
+        <div class="wbgt-dot" style="background:var(--yellow);"></div>
+        <div><h4 style="color:var(--yellow);">AMARILLO</h4><div class="sub">Ajusta el esfuerzo</div><p>Adapta tu ritmo e hidratación a las condiciones.</p></div>
+      </div>
+      <div class="wbgt-row">
+        <div class="wbgt-dot" style="background:var(--red);"></div>
+        <div><h4 style="color:var(--red);">ROJO</h4><div class="sub">Prioriza seguridad</div><p>Atiende las indicaciones del evento.</p></div>
+      </div>
+    </div>
+
+    <p class="eyebrow" style="margin-top:28px;">REGLA SIMPLE:</p>
+    <h2 class="title-xl" style="font-size:clamp(26px,3.8vw,36px);">ESCUCHA TU CUERPO</h2>
+    <p class="lead" style="margin-top:10px;font-weight:700;">No te sientas obligado a terminar si tu cuerpo te indica lo contrario. Reducir el ritmo, detenerse y pedir ayuda a tiempo también es una decisión deportiva responsable.</p>
+    <span class="rule-simple-tag">REDUCIR · DETENERSE · PEDIR AYUDA</span>
+  </div>
+</section>
+
+<!-- 21 RESULTADOS Y PREMIACIÓN -->
+<section class="bg-light" id="sec-resultados">
+  <div class="wrap">
+    <h2 class="title-xl">RESULTADOS</h2>
+    <h2 class="title-xl accent-wrap" style="color:var(--teal);">Y PREMIACIÓN</h2>
+
+    <div class="icon-pair">
+      <div class="ip">
+        <div class="crop gun"><img src="manual-corredor-assets/images/image42.avif" alt=""></div>
+        <span class="pill">GUN TIME</span>
+        <p>Tiempo oficial contado desde la salida general de tu distancia hasta que cruzas la meta. Es el tiempo utilizado para clasificación y podios.</p>
+      </div>
+      <div class="ip">
+        <div class="crop chip"><img src="manual-corredor-assets/images/image42.avif" alt=""></div>
+        <span class="pill">CHIP TIME</span>
+        <p>Tu tiempo individual registrado por el chip. Estará disponible en tu certificado de participación.</p>
+      </div>
+    </div>
+
+    <h3 style="font-family:var(--font-body);font-weight:800;text-transform:uppercase;font-size:24px;color:var(--navy);margin-top:10px;">Resultados oficiales</h3>
+    <p class="lead">La carrera contará con cronometraje electrónico y puntos de control intermedios. Los resultados serán oficiales una vez sean validados por la Organización y la autoridad deportiva competente.</p>
+
+    <h3 style="font-family:var(--font-body);font-weight:800;text-transform:uppercase;font-size:24px;color:var(--navy);margin-top:26px;">Categorías 2026</h3>
+    <table class="cat-table">
+      <thead><tr><th>Categoría</th><th>Edad</th><th>Distancias habilitadas</th></tr></thead>
+      <tbody>
+        <tr><td>Élite</td><td>Según condición Élite</td><td>42K · 21K</td></tr>
+        <tr><td>Mayores</td><td>16 - 39</td><td>42K · 32K · 21K · 10K · 5K · 2K</td></tr>
+        <tr><td>Máster A</td><td>40 - 49</td><td>42K · 21K · 10K · 5K</td></tr>
+        <tr><td>Máster B</td><td>50 - 59</td><td>42K · 21K · 10K · 5K</td></tr>
+        <tr><td>Máster C</td><td>60 - 69</td><td>42K · 21K · 10K · 5K</td></tr>
+        <tr><td>Máster D</td><td>70+</td><td>10K · 5K</td></tr>
+        <tr><td>Infantil</td><td>7 - 15</td><td>2K</td></tr>
+      </tbody>
+    </table>
+    <p class="table-note">La edad se determina con corte al 29 de noviembre de 2026. La participación excepcional de corredores de 10 a 15 años en 5K se rige por las condiciones especiales del reglamento.</p>
+  </div>
+</section>
+
+<!-- 22 CIERRE -->
+<section class="closing">
+  <div class="wrap">
+    <div class="closing-top">
+      <img src="manual-corredor-assets/images/image44.avif" alt="">
+      <div>
+        <h2 class="title-xl on-navy">MANTENTE</h2>
+        <h2 class="title-xl on-navy"><span class="accent">INFORMADO</span></h2>
+        <p>Antes de la carrera, revisa nuevamente los canales oficiales. Por razones de seguridad, logística o decisiones de las autoridades, la Organización podrá realizar ajustes operativos.</p>
+        <p>Cualquier cambio relevante será comunicado a través de los canales oficiales de la Maratón 7 Colores.</p>
+      </div>
+    </div>
+
+    <span class="pill lime">CANALES OFICIALES</span>
+
+    <div class="channels-row">
+      <div class="ch"><div class="crop c0"><img src="manual-corredor-assets/images/image45.avif" alt=""></div><h5>Web oficial</h5><p>fundacion7colores.org</p></div>
+      <div class="ch"><div class="crop c1"><img src="manual-corredor-assets/images/image45.avif" alt=""></div><h5>Términos y condiciones</h5><p>fundacion7colores.org/terminos-y-condiciones/</p></div>
+      <div class="ch"><div class="crop c2"><img src="manual-corredor-assets/images/image45.avif" alt=""></div><h5>Mapas y altimetrías</h5><p>URL</p></div>
+      <div class="ch"><div class="crop c3"><img src="manual-corredor-assets/images/image45.avif" alt=""></div><h5>Resultados</h5><p>URL</p></div>
+      <div class="ch"><div class="crop c4"><img src="manual-corredor-assets/images/image45.avif" alt=""></div><h5>Servicio al corredor</h5><p>servicioalcliente@fundacion7colores.org</p></div>
+    </div>
+
+    <div class="closing-final">
+      <div class="small">YA HICISTE LA PARTE MÁS DIFÍCIL:</div>
+      <h3>LLEGAR HASTA AQUÍ</h3>
+      <p>Ahora conoce tu ruta, respeta tu carrera y disfruta San Andrés.<br>Nos vemos en la salida.</p>
+    </div>
+
+    <p class="closing-disclaimer">Este manual resume la información operativa esencial para el corredor. Consulta siempre los Términos y Condiciones oficiales de la Maratón 7 Colores.</p>
+  </div>
+</section>
+
+<script>
+(function(){
+  // Hide the floating button while the index section is on screen
+  let btn=document.querySelector('.back-index');
+  let idx=document.getElementById('indice');
+  if(!btn||!idx||!('IntersectionObserver' in window)) return;
+  new IntersectionObserver(function(entries){
+    btn.classList.toggle('is-hidden',entries[0].isIntersecting);
+  },{threshold:0.15}).observe(idx);
+})();
+</script>
+</body>
+</html>
