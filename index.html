@@ -337,13 +337,17 @@
   .closing-top h2 + h2{margin-bottom:14px;}
   .channels-row{display:grid;grid-template-columns:repeat(5,1fr);gap:18px;margin:30px 0 50px;padding-top:30px;border-top:2px solid rgba(255,255,255,.25);}
   .channels-row .ch{text-align:center;}
+  .channels-row p a{color:inherit;text-decoration:underline;text-underline-offset:2px;overflow-wrap:anywhere;}
+  .channels-row p a:hover{color:var(--lime);}
+  .inline-link{color:var(--navy);font-weight:700;text-decoration:underline;overflow-wrap:anywhere;}
+  .cut-loc{font-weight:700;font-size:12.5px;margin-top:8px;max-width:260px;margin-left:auto;}
   .channels-row .crop{width:64px;height:64px;margin:0 auto 10px;overflow:hidden;position:relative;}
   .channels-row .crop img{position:absolute;width:300%;max-width:none;}
   .channels-row .c0 img{top:0;left:0;}
   .channels-row .c1 img{top:0;left:-100%;}
   .channels-row .c2 img{top:0;left:-200%;}
-  .channels-row .c3 img{top:-100%;left:0;}
-  .channels-row .c4 img{top:-100%;left:-100%;}
+  .channels-row .c3 img{top:-100%;left:-50%;}
+  .channels-row .c4 img{top:-100%;left:-150%;}
   .channels-row h5{font-weight:800;text-transform:uppercase;font-size:12.5px;color:var(--lime);margin:0 0 4px;}
   .channels-row p{margin:0;font-size:11px;line-height:1.3;word-break:break-word;}
   .closing-final{text-align:center;padding-top:6px;}
@@ -376,6 +380,7 @@
     .cut-top > *{min-width:0;max-width:100%;}
     .cut-top img{width:72px;}
     .cut-hours{font-size:clamp(30px,9vw,40px);}
+    .cut-loc{margin-left:auto;margin-right:auto;}
     .cut-side{text-align:center;border-top:1px solid rgba(18,58,99,.2);padding-top:14px;width:100%;}
     .closing-top{grid-template-columns:1fr;text-align:center;gap:10px;margin:18px 0 22px;justify-items:center;}
     .closing-top img.closing-icon{width:64px;justify-self:center;}
@@ -649,6 +654,7 @@
 
     <div class="timeline">
       <div class="step"><h4>Antes de salir</h4><p>Desayuna y prepárate según tu rutina. No estrenes calzado, nutrición ni equipamiento.</p></div>
+      <div class="step"><h4>Transporte</h4><p>Si necesitas un vehículo para llegar a la línea de salida, resérvalo con antelación y planea tu ruta. Toda la vía perimetral de la isla estará inhabilitada para el tránsito vehicular.</p></div>
       <div class="step"><h4>30 minutos antes</h4><p>Ubícate en la zona de partida de tu distancia con dorsal visible y manilla oficial.</p></div>
       <div class="step"><h4>Llamado a corrales</h4><p>Sigue megafonía, señalización y las indicaciones del personal de organización.</p></div>
       <div class="step"><h4>En ruta</h4><p>Usa los puntos oficiales de hidratación y atención. Si abandonas, informa al equipo oficial. Está prohibida la entrega de hidratación o alimentación externa por parte de terceros.</p></div>
@@ -759,7 +765,7 @@
 
     <div class="shield-note">
       <img src="manual-corredor-assets/images/image13.avif" alt="">
-      <p>Los mapas y altimetrías oficiales 2026 deberán consultarse en los canales oficiales de la Organización una vez publicados.</p>
+      <p>Los mapas y altimetrías oficiales 2026 deberán consultarse en los canales oficiales de la Organización una vez publicados. Podrán presentar variaciones por ajustes operacionales y de seguridad.</p>
     </div>
   </div>
 </section>
@@ -778,7 +784,7 @@
           <div class="tagline">Haz historia desde pequeño.</div>
         </div>
         <div class="mini-cols">
-          <div class="col"><div class="lab" style="color:var(--lime)">Recorrido <span class="sm">aproximadamente</span></div><div class="val">1,2 Km de ida<br>800 m de regreso</div></div>
+          <div class="col"><div class="lab" style="color:var(--lime)">Recorrido <span class="sm">aproximado</span></div><div class="val">1,2 Km de ida<br>800 m de regreso</div></div>
           <div class="col"><div class="lab" style="color:var(--lime)">Edad</div><div class="val">7 a 15 años</div></div>
           <div class="col"><div class="lab" style="color:var(--lime)">Clasificación</div><div class="val">Niñas y Niños</div></div>
         </div>
@@ -792,7 +798,7 @@
           <div class="tagline">La magia del Caribe.</div>
         </div>
         <div class="mini-cols">
-          <div class="col"><div class="lab" style="color:var(--teal)">Recorrido <span class="sm">aproximadamente</span></div><div class="val">2,7 Km de ida<br>2,3 Km de regreso</div></div>
+          <div class="col"><div class="lab" style="color:var(--teal)">Recorrido <span class="sm">aproximado</span></div><div class="val">2,7 Km de ida<br>2,3 Km de regreso</div></div>
           <div class="col"><div class="lab" style="color:var(--teal)">Edad</div><div class="val">Desde 16 años</div></div>
           <div class="col"><div class="lab" style="color:var(--teal)">Excepción</div><div class="val">10 a 15 años con autorización del responsable</div></div>
         </div>
@@ -816,7 +822,7 @@
           <div class="tagline" style="font-size:14px;font-weight:500;text-transform:none;">Trayecto costero para quienes buscan avanzar desde distancias cortas y correr con ritmo controlado.</div>
         </div>
         <div class="mini-cols">
-          <div class="col"><div class="lab" style="color:var(--lime)">Recorrido</div><div class="val">5,2 Km de ida<br>4,8 Km de regreso</div></div>
+          <div class="col"><div class="lab" style="color:var(--lime)">Recorrido <span class="sm">aproximado</span></div><div class="val">5,2 Km de ida<br>4,8 Km de regreso</div></div>
           <div class="col"><div class="lab" style="color:var(--lime)">Salida oficial</div><div class="val">5:40 A.M.</div></div>
         </div>
       </div>
@@ -828,10 +834,10 @@
           <div class="tagline">Un reto con vistas al paraíso.</div>
         </div>
         <div class="mini-cols">
-          <div class="col"><div class="lab" style="color:var(--teal)">Recorrido <span class="sm">aproximadamente</span></div><div class="val">10,5 Km de ida<br>10,5 Km de regreso</div></div>
+          <div class="col"><div class="lab" style="color:var(--teal)">Recorrido</div><div class="val">10,5 Km de ida<br>10,5 Km de regreso</div></div>
           <div class="col"><div class="lab" style="color:var(--teal)">Salida oficial</div><div class="val">5:30 A.M.</div></div>
         </div>
-        <p class="body">Distancia certificada internacionalmente por World Athletics y AIMS. Medio Maratón oficial: 21,0975 km. Recorrido de ida y regreso junto al paisaje de San Andrés. Cronometraje electrónico y clasificación oficial.</p>
+        <p class="body">Distancia certificada internacionalmente por World Athletics y AIMS. Media Maratón oficial: 21,0975 km. Recorrido de ida y regreso junto al paisaje de San Andrés. Cronometraje electrónico y clasificación oficial.</p>
       </div>
     </div>
   </div>
@@ -851,7 +857,7 @@
         </div>
         <p class="body">Recorrido aproximado por el perímetro de la isla de San Andrés, en sentido horario, por sus vías costeras. Una distancia para quienes buscan un reto superior al 21K antes de enfrentarse a la maratón.</p>
         <div class="mini-cols">
-          <div class="col"><div class="lab" style="color:var(--lime)">Recorrido</div><div class="val">≈ 32 KM</div><div class="sm">Vuelta completa al perímetro de San Andrés.</div></div>
+          <div class="col"><div class="lab" style="color:var(--lime)">Recorrido <span class="sm">aproximado</span></div><div class="val">≈ 32 KM</div><div class="sm">Vuelta completa al perímetro de San Andrés.</div></div>
           <div class="col"><div class="lab" style="color:var(--lime)">Salida oficial</div><div class="val">4:40 A.M.</div></div>
           <div class="col"><div class="lab" style="color:var(--lime)">Categoría</div><div class="val">Mayores · 16-39</div><div class="sm">Hombres · Mujeres</div></div>
         </div>
@@ -863,7 +869,7 @@
           <div class="tag" style="color:var(--teal)">Maratón completa</div>
           <div class="tagline">Corre para hacer historia.</div>
         </div>
-        <p class="body">El recorrido completa primero el circuito perimetral de aproximadamente 32 km y continúa con un tramo adicional de ida y regreso para completar la distancia oficial. = 32 KM del perímetro de la isla + 5 KM ida + 5 KM regreso.</p>
+        <p class="body">El recorrido completa primero el circuito perimetral de aproximadamente 32 km y continúa con un tramo adicional de ida y regreso para completar la distancia oficial = 32 KM del perímetro de la isla + 5 KM ida + 5 KM regreso.</p>
         <div class="mini-cols">
           <div class="col"><div class="lab" style="color:var(--teal)">Total oficial</div><div class="val">42,195 km</div></div>
           <div class="col"><div class="lab" style="color:var(--teal)">Salida oficial</div><div class="val">4:30 A.M.</div></div>
@@ -971,7 +977,7 @@
         <div class="rule"><h5>Sigue las indicaciones</h5><p>Atiende siempre a jueces, logística, seguridad y personal médico.</p></div>
         <div class="rule"><h5>Auriculares</h5><p>Permitidos bajo tu responsabilidad. Mantén la capacidad de escuchar instrucciones y lo que ocurre a tu alrededor.</p></div>
         <div class="rule"><h5>Si abandonas</h5><p>Informa a un integrante del equipo oficial.</p></div>
-        <div class="rule"><h5>Cuida a San Andrés</h5><p>Deposita los residuos únicamente en los lugares habilitados. Mantengamos la isla limpia para que todos podamos seguir disfrutándola.</p></div>
+        <div class="rule"><h5>Cuida a San Andrés</h5><p>Deposita los residuos únicamente en los lugares habilitados. Mantengamos la isla limpia para que todos podamos seguir disfrutándola. Es obligación de todos los corredores depositar los residuos generados en los contenedores dispuestos por la organización. No hacerlo acarreará sanciones, que pueden llegar hasta la descalificación.</p></div>
       </div>
     </div>
 
@@ -1005,6 +1011,7 @@
           <div class="dist">42K y 32K</div>
           <div class="lab2">PUNTO DE CORTE ANTES DE LAS</div>
           <span class="cut-badge">8:30 A.M.</span>
+          <div class="cut-loc">Ubicación: sector letras I LOVE SAN ANDRÉS, inicio de la vía peatonal.</div>
         </div>
       </div>
       <div class="cut-footer">El sector exacto será informado por la Organización. Quien no cumpla el corte podrá ser retirado del circuito.</div>
@@ -1012,12 +1019,12 @@
 
     <div class="qa-block">
       <h4>¿QUÉ PASA SI NO <span class="accent">CUMPLES UN CORTE?</span></h4>
-      <p>La Organización realizará un barrido progresivo del recorrido y la vía será reabierta por segmentos. Si superas un corte operativo deberás abandonar el circuito oficial o continuar por fuera de competencia, sin servicios oficiales ni clasificación.</p>
+      <p>La Organización realizará un barrido progresivo del recorrido y la vía será reabierta por segmentos. Si superas un corte operativo deberás abandonar el circuito oficial. Nuestro equipo logístico te estará orientando y brindando acompañamiento.</p>
     </div>
 
     <div class="qa-block">
       <h4>SI NECESITAS AYUDA, <span class="accent">PÍDELA</span></h4>
-      <p>La carrera contará con atención médica, ambulancias, personal de primeros auxilios y equipos de respuesta en ruta y meta. Si tú u otro corredor presentan una emergencia, informa inmediatamente al personal de la Organización, Salud o Seguridad.</p>
+      <p>La carrera contará con atención médica, ambulancias, personal de primeros auxilios y equipos de respuesta en ruta y meta. Si tú u otro corredor presentan una emergencia, informa inmediatamente al personal de la Organización, Salud o Seguridad. También contarás con un equipo médico voluntario, identificado con un distintivo visible: bombas rojas.</p>
       <p>La seguridad está primero. Jueces y personal oficial podrán retirar del recorrido a un corredor cuando exista un riesgo médico evidente o una situación que comprometa su seguridad.</p>
     </div>
   </div>
@@ -1108,11 +1115,11 @@
     <span class="pill lime pill-center">CANALES OFICIALES</span>
 
     <div class="channels-row">
-      <div class="ch"><div class="crop c0"><img src="manual-corredor-assets/images/image45.avif" alt=""></div><h5>Web oficial</h5><p>fundacion7colores.org</p></div>
-      <div class="ch"><div class="crop c1"><img src="manual-corredor-assets/images/image45.avif" alt=""></div><h5>Términos y condiciones</h5><p>fundacion7colores.org/terminos-y-condiciones/</p></div>
-      <div class="ch"><div class="crop c2"><img src="manual-corredor-assets/images/image45.avif" alt=""></div><h5>Mapas y altimetrías</h5><p>URL</p></div>
+      <div class="ch"><div class="crop c0"><img src="manual-corredor-assets/images/image45.avif" alt=""></div><h5>Web oficial</h5><p><a href="https://www.fundacion7colores.org/" target="_blank" rel="noopener">fundacion7colores.org</a></p></div>
+      <div class="ch"><div class="crop c1"><img src="manual-corredor-assets/images/image45.avif" alt=""></div><h5>Términos y condiciones</h5><p><a href="https://www.fundacion7colores.org/terminos-y-condiciones/" target="_blank" rel="noopener">fundacion7colores.org/terminos-y-condiciones/</a></p></div>
+      <div class="ch"><div class="crop c2"><img src="manual-corredor-assets/images/image45.avif" alt=""></div><h5>Mapas y altimetrías</h5><p><a href="https://www.fundacion7colores.org/recorridos-maraton-7-colores/" target="_blank" rel="noopener">fundacion7colores.org/recorridos-maraton-7-colores/</a></p></div>
       <div class="ch"><div class="crop c3"><img src="manual-corredor-assets/images/image45.avif" alt=""></div><h5>Resultados</h5><p>URL</p></div>
-      <div class="ch"><div class="crop c4"><img src="manual-corredor-assets/images/image45.avif" alt=""></div><h5>Servicio al corredor</h5><p>servicioalcliente@fundacion7colores.org</p></div>
+      <div class="ch"><div class="crop c4"><img src="manual-corredor-assets/images/image45.avif" alt=""></div><h5>Servicio al corredor</h5><p><a href="mailto:servicioalcliente@fundacion7colores.org">servicioalcliente@fundacion7colores.org</a></p></div>
     </div>
 
     <div class="closing-final">
