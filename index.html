@@ -1140,11 +1140,11 @@
     <span class="pill lime pill-center">CANALES OFICIALES</span>
 
     <div class="channels-row">
-      <div class="ch"><div class="crop c0"><img src="manual-corredor-assets/images/image45.avif" alt=""></div><h5>Web oficial</h5><p><a href="https://www.fundacion7colores.org/" target="_blank" rel="noopener">fundacion7colores.org</a></p></div>
-      <div class="ch"><div class="crop c1"><img src="manual-corredor-assets/images/image45.avif" alt=""></div><h5>Términos y condiciones</h5><p><a href="https://www.fundacion7colores.org/terminos-y-condiciones/" target="_blank" rel="noopener">fundacion7colores.org/terminos-y-condiciones/</a></p></div>
-      <div class="ch"><div class="crop c2"><img src="manual-corredor-assets/images/image45.avif" alt=""></div><h5>Mapas y altimetrías</h5><p><a href="https://www.fundacion7colores.org/recorridos-maraton-7-colores/" target="_blank" rel="noopener">fundacion7colores.org/recorridos-maraton-7-colores/</a></p></div>
-      <div class="ch"><div class="crop c3"><img src="manual-corredor-assets/images/image45.avif" alt=""></div><h5>Resultados</h5><p><a class="ch-btn" href="https://live.finalap.com/resultados/maraton-7-colores-2025">Ver resultados</a></p></div>
-      <div class="ch"><div class="crop c4"><img src="manual-corredor-assets/images/image45.avif" alt=""></div><h5>Servicio al corredor</h5><p><a href="mailto:servicioalcliente@fundacion7colores.org">servicioalcliente@fundacion7colores.org</a></p></div>
+      <div class="ch"><div class="crop c0"><img src="manual-corredor-assets/images/image45.avif" alt=""></div><h5>Web oficial</h5><p><a class="ch-btn" href="https://www.fundacion7colores.org/" target="_blank" rel="noopener">Visitar web</a></p></div>
+      <div class="ch"><div class="crop c1"><img src="manual-corredor-assets/images/image45.avif" alt=""></div><h5>Términos y condiciones</h5><p><a class="ch-btn" href="https://www.fundacion7colores.org/terminos-y-condiciones/" target="_blank" rel="noopener">Ver términos</a></p></div>
+      <div class="ch"><div class="crop c2"><img src="manual-corredor-assets/images/image45.avif" alt=""></div><h5>Mapas y altimetrías</h5><p><a class="ch-btn" href="https://www.fundacion7colores.org/recorridos-maraton-7-colores/" target="_blank" rel="noopener">Ver mapas</a></p></div>
+      <div class="ch"><div class="crop c3"><img src="manual-corredor-assets/images/image45.avif" alt=""></div><h5>Resultados</h5><p><a class="ch-btn" href="https://live.finalap.com/resultados/maraton-7-colores-2025" target="_blank" rel="noopener">Ver resultados</a></p></div>
+      <div class="ch"><div class="crop c4"><img src="manual-corredor-assets/images/image45.avif" alt=""></div><h5>Servicio al corredor</h5><p><a class="ch-btn" href="mailto:servicioalcliente@fundacion7colores.org">Escríbenos</a></p></div>
     </div>
 
     <div class="closing-final">
@@ -1159,13 +1159,22 @@
 
 <script>
 (function(){
-  // Hide the floating button while the index section is on screen
+  // Hide the floating button while the cover or the index is on screen
+  // (on the cover it would sit on top of the site header)
   let btn=document.querySelector('.back-index');
   let idx=document.getElementById('indice');
+  let hero=document.querySelector('#m7c-manual .hero, .hero');
   if(!btn||!idx||!('IntersectionObserver' in window)) return;
-  new IntersectionObserver(function(entries){
-    btn.classList.toggle('is-hidden',entries[0].isIntersecting);
-  },{threshold:0.15}).observe(idx);
+  let visible=new Map();
+  btn.classList.add('is-hidden');
+  let io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ visible.set(e.target,e.isIntersecting); });
+    let hide=false;
+    visible.forEach(function(v){ if(v) hide=true; });
+    btn.classList.toggle('is-hidden',hide);
+  },{threshold:0.15});
+  io.observe(idx);
+  if(hero) io.observe(hero);
 })();
 </script>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
