@@ -585,7 +585,23 @@ window.M7C_SCHEDULE = { "42K": "4:30 a. m.", "32K": "4:40 a. m.", "21K": "5:30 a
     var out = ['<?xml version="1.0" encoding="UTF-8"?>',
       '<gpx version="1.1" creator="Maratón 7 Colores" xmlns="http://www.topografix.com/GPX/1/1">',
       '<metadata><name>' + xml(name) + '</name><desc>' + xml('Recorrido ' + state.key + ' · ' + fmtKm(state.total) + ' · San Andrés Isla') + '</desc></metadata>'];
-    out.push('<wpt lat="' + c[0][0] + '" lon="' + c[0][1] + '"><name>Salida / Meta</name><sym>Flag, Green</sym></wpt>');
+    let gm = state.gpxMarks || { salida: { title: '', latlng: c[0] }, meta: { title: '', latlng: c[c.length - 1] }, sameSite: true, turn: null };
+    let wpt = function (pt, label, title, desc, sym) {
+      return '<wpt lat="' + pt[0] + '" lon="' + pt[1] + '"><name>' + xml(label + (title ? ' · ' + title : '')) + '</name>' +
+        (desc ? '<desc>' + xml(desc) + '</desc>' : '') + '<sym>' + sym + '</sym></wpt>';
+    };
+    if (gm.sameSite) {
+      out.push(wpt(gm.salida.latlng, 'Salida / Meta', gm.salida.title, 'km 0 · ' + fmtKm(state.total), 'Flag, Green'));
+    } else {
+      out.push(wpt(gm.salida.latlng, 'Salida', gm.salida.title, 'km 0', 'Flag, Green'));
+      out.push(wpt(gm.meta.latlng, 'Meta', gm.meta.title, fmtKm(state.total), 'Flag, Red'));
+    }
+    if (gm.turn) {
+      // Distance along the route to the turn point (closest track point)
+      let best = 0, bestD = Infinity;
+      for (let k = 0; k < c.length; k++) { let dd = hav(gm.turn, c[k]); if (dd < bestD) { bestD = dd; best = k; } }
+      out.push(wpt(gm.turn, 'Retorno', '', 'km ' + fmtKm1(state.cum[best]), 'Flag, Blue'));
+    }
     state.stops.forEach(function (s) {
       var kms = s.passes.map(function (p) { return 'km ' + fmtKm1(p); }).join(' y ');
       out.push('<wpt lat="' + s.pt[0] + '" lon="' + s.pt[1] + '"><name>' + xml(s.name) + '</name>' +
@@ -605,28 +621,15 @@ window.M7C_SCHEDULE = { "42K": "4:30 a. m.", "32K": "4:40 a. m.", "21K": "5:30 a
     setTimeout(function () { URL.revokeObjectURL(url); }, 4000);
   }
 
-  /* ---------- Enlace por distancia (?ruta=10K) ----------
-     Solo cambia lo que se ve en la barra de direcciones (history.replaceState); no recarga la página
-     ni hace ninguna petición. Así se puede compartir el link de una distancia en particular. */
-  function syncUrl(key) {
-    try {
-      var url = new URL(window.location.href);
-      url.searchParams.set('ruta', key);
-      window.history.replaceState(null, '', url);
-    } catch (e) { /* si el navegador no lo permite (ej. archivo local sin http), el mapa sigue igual */ }
-  }
+  /* ---------- Initial route ----------
+     Inside the runner's manual the map always opens on 10K and does not touch the URL. */
   function initialKey() {
-    try {
-      var r = new URL(window.location.href).searchParams.get('ruta');
-      if (r && DATA[r.toUpperCase()]) return r.toUpperCase();
-    } catch (e) { }
     return '10K';
   }
 
   /* ---------- Selección de recorrido ---------- */
   function select(key) {
     pause(); hideScene();
-    syncUrl(key);
     var route = DATA[key];
     state.key = key; state.coords = route.coords; state.pos = 0;
     state.cum = [0];
@@ -722,6 +725,8 @@ window.M7C_SCHEDULE = { "42K": "4:30 a. m.", "32K": "4:40 a. m.", "21K": "5:30 a
     }
     // Si el recorrido trae su punto de retorno oficial (data/routes.js), se usa ese; si no, el calculado.
     var turnPt = route.retorno || (turnIdx >= 0 ? state.coords[turnIdx] : null);
+    // Keep start, finish and turn points so the GPX export marks them too
+    state.gpxMarks = { salida: salida, meta: meta, sameSite: mismoSitio, turn: turnPt };
     if (turnPt) {
       // El letrero va del lado contrario a por donde llega la vía, para no taparla.
       var ti2 = 0, tdBest = Infinity;
