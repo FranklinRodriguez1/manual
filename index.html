@@ -288,6 +288,14 @@
   .hyd-banner h3.lime{color:var(--lime);margin-bottom:10px;}
   .hyd-banner p{margin:0;font-size:15px;line-height:1.5;}
   .hyd-banner img{width:100%;max-width:170px;justify-self:end;}
+  /* ---------- CONTENEDORES M7C (rules section) ---------- */
+  .eco-card{display:grid;grid-template-columns:1.1fr 1fr;gap:0;margin-top:34px;border-radius:22px;overflow:hidden;background:var(--white);border:2px solid var(--lime);}
+  .eco-card img{width:100%;height:100%;object-fit:cover;min-height:280px;}
+  .eco-text{padding:30px 32px;align-self:center;}
+  .eco-text h4{font-family:var(--font-rounded);font-weight:800;font-size:clamp(22px,2.8vw,28px);color:var(--navy);margin:0 0 12px;text-transform:uppercase;}
+  .eco-text p{margin:0 0 12px;font-size:15px;line-height:1.55;color:var(--navy);}
+  .eco-text strong{font-weight:800;}
+  .eco-text .eco-cta{margin:4px 0 0;font-weight:800;color:var(--teal);}
   .wbgt-row{display:flex;gap:22px;align-items:flex-start;margin:22px 0;}
   .wbgt-dot{width:76px;height:76px;border-radius:50%;flex-shrink:0;}
   .wbgt-row h4{font-family:var(--font-rounded);font-weight:800;font-size:30px;margin:0 0 2px;}
@@ -362,6 +370,9 @@
   .closing-final p{font-size:15.5px;max-width:640px;margin:0 auto;line-height:1.6;}
   .closing-disclaimer{margin-top:30px;font-size:12.5px;font-style:italic;text-align:center;opacity:.85;max-width:700px;margin-left:auto;margin-right:auto;}
   @media (max-width: 860px){
+    .eco-card{grid-template-columns:1fr;}
+    .eco-card img{min-height:0;height:auto;aspect-ratio:3/2;}
+    .eco-text{padding:22px 20px;}
     .hyd-grid{grid-template-columns:1fr;gap:20px;}
     .hyd-banner{grid-template-columns:1fr;text-align:center;padding:24px 20px;}
     .hyd-banner img{justify-self:center;max-width:130px;order:-1;}
@@ -1018,6 +1029,17 @@
         <div class="rule"><h5>Auriculares</h5><p>Permitidos bajo tu responsabilidad. Mantén la capacidad de escuchar instrucciones y lo que ocurre a tu alrededor.</p></div>
         <div class="rule"><h5>Si abandonas</h5><p>Informa a un integrante del equipo oficial.</p></div>
         <div class="rule"><h5>Cuida a San Andrés</h5><p>Deposita los residuos únicamente en los lugares habilitados. Mantengamos la isla limpia para que todos podamos seguir disfrutándola. Es obligación de todos los corredores depositar los residuos generados en los contenedores dispuestos por la organización. No hacerlo acarreará sanciones, que pueden llegar hasta la descalificación.</p></div>
+      </div>
+    </div>
+
+    <!-- M7C waste containers -->
+    <div class="eco-card">
+      <img src="manual-corredor-assets/images/contenedores-m7c.avif" alt="Corredora depositando un vaso en un contenedor azul de la Maratón 7 Colores">
+      <div class="eco-text">
+        <h4>Contenedores M7C</h4>
+        <p>En cada puesto de hidratación encontrarás <strong>contenedores cuadrados azules identificados con el logo M7C</strong>, destinados a depositar los residuos que generes durante el recorrido.</p>
+        <p>Recuerda que, de acuerdo con el reglamento de la Maratón 7 Colores, arrojar basura al suelo fuera de los contenedores será <strong>motivo de penalización</strong>.</p>
+        <p class="eco-cta">Ayúdanos a mantener limpia nuestra isla y a proteger el mar de los 7 colores.</p>
       </div>
     </div>
 
