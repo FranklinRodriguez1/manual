@@ -276,6 +276,18 @@
   .qa-block p{font-size:14.5px;line-height:1.6;opacity:.95;}
 
   /* ---------- WBGT ---------- */
+  /* ---------- HIDRATACIÓN (inside WBGT section) ---------- */
+  .hyd-block{margin-top:56px;}
+  .hyd-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px 48px;margin:30px 0 34px;}
+  .hyd-item h4{font-family:var(--font-rounded);font-weight:800;font-size:clamp(26px,3.4vw,34px);color:var(--navy);margin:0 0 8px;}
+  .hyd-item h4.teal{color:var(--teal);}
+  .hyd-item p{margin:0 0 8px;font-size:15px;line-height:1.45;color:var(--navy);}
+  .hyd-item strong{font-weight:800;}
+  .hyd-banner{background:var(--navy);color:var(--white);border-radius:22px;padding:28px 32px;display:grid;grid-template-columns:1fr 170px;gap:24px;align-items:center;}
+  .hyd-banner h3{font-family:var(--font-rounded);font-weight:800;font-size:clamp(24px,3.2vw,34px);margin:0;line-height:1.1;}
+  .hyd-banner h3.lime{color:var(--lime);margin-bottom:10px;}
+  .hyd-banner p{margin:0;font-size:15px;line-height:1.5;}
+  .hyd-banner img{width:100%;max-width:170px;justify-self:end;}
   .wbgt-row{display:flex;gap:22px;align-items:flex-start;margin:22px 0;}
   .wbgt-dot{width:76px;height:76px;border-radius:50%;flex-shrink:0;}
   .wbgt-row h4{font-family:var(--font-rounded);font-weight:800;font-size:30px;margin:0 0 2px;}
@@ -350,6 +362,9 @@
   .closing-final p{font-size:15.5px;max-width:640px;margin:0 auto;line-height:1.6;}
   .closing-disclaimer{margin-top:30px;font-size:12.5px;font-style:italic;text-align:center;opacity:.85;max-width:700px;margin-left:auto;margin-right:auto;}
   @media (max-width: 860px){
+    .hyd-grid{grid-template-columns:1fr;gap:20px;}
+    .hyd-banner{grid-template-columns:1fr;text-align:center;padding:24px 20px;}
+    .hyd-banner img{justify-self:center;max-width:130px;order:-1;}
     section{padding:52px 0;}
     .index-grid,.checklist-grid,.two-col,.num-row,.stat-row,.step5-row,.rules-grid,.icon-pair,.channels-row,.time-grid,.photo-grid{grid-template-columns:1fr 1fr;}
     .num-row,.stat-row{grid-template-columns:1fr 1fr;}
@@ -1082,6 +1097,41 @@
     <h2 class="title-xl" style="font-size:clamp(26px,3.8vw,36px);">ESCUCHA TU CUERPO</h2>
     <p class="lead" style="margin-top:10px;font-weight:700;">No te sientas obligado a terminar si tu cuerpo te indica lo contrario. Reducir el ritmo, detenerse y pedir ayuda a tiempo también es una decisión deportiva responsable.</p>
     <span class="rule-simple-tag">REDUCIR · DETENERSE · PEDIR AYUDA</span>
+
+    <!-- Hydration: official points only -->
+    <div class="hyd-block">
+      <h2 class="title-xl" style="font-size:clamp(28px,4.2vw,40px);">HIDRATACIÓN:</h2>
+      <h2 class="title-xl accent-wrap" style="font-size:clamp(24px,3.6vw,34px);">SOLO EN PUNTOS OFICIALES</h2>
+      <p class="lead" style="margin-top:12px;">Todos los recorridos contarán con puntos de hidratación. La distribución exacta, productos y kilometrajes 2026 serán comunicados en la información operativa final.</p>
+      <div class="hyd-grid">
+        <div class="hyd-item">
+          <h4>ANTES</h4>
+          <p>Llega bien hidratado según tu rutina.</p>
+          <p><strong>Evita cambios drásticos de última hora.</strong></p>
+        </div>
+        <div class="hyd-item">
+          <h4 class="teal">DURANTE</h4>
+          <p>Bebe constantemente incluso si no tienes sed. Evita la deshidratación.</p>
+          <p><strong>Utiliza los suministros oficiales del evento.</strong></p>
+        </div>
+        <div class="hyd-item">
+          <h4 class="teal">EN CALOR</h4>
+          <p>Reduce el ritmo si es necesario. Atiende señales de mareo, confusión, escalofríos o debilidad inusual.</p>
+        </div>
+        <div class="hyd-item">
+          <h4>ASISTENCIA</h4>
+          <p>La entrega externa de hidratación o alimentación por terceros a corredores en movimiento está <strong>prohibida</strong>.</p>
+        </div>
+      </div>
+      <div class="hyd-banner">
+        <div>
+          <h3>NO IMPROVISES</h3>
+          <h3 class="lime">EL DÍA DE LA CARRERA</h3>
+          <p>Se recomienda mantener la rutina habitual, no estrenar nutrición ni equipamiento y acudir al personal médico si aparecen síntomas que se aparten de lo esperado.</p>
+        </div>
+        <img src="manual-corredor-assets/images/hidratacion-botella.avif" alt="">
+      </div>
+    </div>
   </div>
 </section>
 
