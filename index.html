@@ -277,7 +277,6 @@
 
   /* ---------- WBGT ---------- */
   /* ---------- HIDRATACIÓN (inside WBGT section) ---------- */
-  .hyd-block{margin-top:56px;}
   .hyd-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px 48px;margin:30px 0 34px;}
   .hyd-item h4{font-family:var(--font-rounded);font-weight:800;font-size:clamp(26px,3.4vw,34px);color:var(--navy);margin:0 0 8px;}
   .hyd-item h4.teal{color:var(--teal);}
@@ -486,15 +485,16 @@
         <a class="index-item" href="#sec-horarios"><span class="index-num">05</span><span class="index-label">Horarios de salida</span></a>
         <a class="index-item" href="#sec-manana"><span class="index-num">06</span><span class="index-label">Tu mañana de carrera</span></a>
         <a class="index-item" href="#sec-salida-corrales"><span class="index-num">07</span><span class="index-label">Salida y corrales</span></a>
+        <a class="index-item" href="#sec-elementos"><span class="index-num">08</span><span class="index-label">Elementos del corredor</span></a>
       </div>
       <div>
-        <a class="index-item" href="#sec-elementos"><span class="index-num">08</span><span class="index-label">Elementos del corredor</span></a>
         <a class="index-item" href="#sec-distancia-ruta"><span class="index-num">09</span><span class="index-label">Tu distancia y ruta<small>42K · 32K · 21K · 10K · 5K · 2K</small></span></a>
         <a class="index-item" href="#sec-recorridos"><span class="index-num">10</span><span class="index-label">Recorridos oficiales</span></a>
         <a class="index-item" href="#sec-reglas-ruta"><span class="index-num">11</span><span class="index-label">Reglas en ruta</span></a>
         <a class="index-item" href="#sec-cortes-seguridad"><span class="index-num">12</span><span class="index-label">Cortes y seguridad</span></a>
         <a class="index-item" href="#sec-wbgt"><span class="index-num">13</span><span class="index-label">Protocolo WBGT</span></a>
-        <a class="index-item" href="#sec-resultados"><span class="index-num">14</span><span class="index-label">Resultados y premiación</span></a>
+        <a class="index-item" href="#sec-hidratacion"><span class="index-num">14</span><span class="index-label">Hidratación</span></a>
+        <a class="index-item" href="#sec-resultados"><span class="index-num">15</span><span class="index-label">Resultados y premiación</span></a>
       </div>
     </div>
   </div>
@@ -1119,40 +1119,42 @@
     <h2 class="title-xl" style="font-size:clamp(26px,3.8vw,36px);">ESCUCHA TU CUERPO</h2>
     <p class="lead" style="margin-top:10px;font-weight:700;">No te sientas obligado a terminar si tu cuerpo te indica lo contrario. Reducir el ritmo, detenerse y pedir ayuda a tiempo también es una decisión deportiva responsable.</p>
     <span class="rule-simple-tag">REDUCIR · DETENERSE · PEDIR AYUDA</span>
+  </div>
+</section>
 
-    <!-- Hydration: official points only -->
-    <div class="hyd-block">
-      <h2 class="title-xl" style="font-size:clamp(28px,4.2vw,40px);">HIDRATACIÓN:</h2>
-      <h2 class="title-xl accent-wrap" style="font-size:clamp(24px,3.6vw,34px);">SOLO EN PUNTOS OFICIALES</h2>
-      <p class="lead" style="margin-top:12px;">Todos los recorridos contarán con puntos de hidratación. La distribución exacta, productos y kilometrajes 2026 serán comunicados en la información operativa final.</p>
-      <div class="hyd-grid">
-        <div class="hyd-item">
-          <h4>ANTES</h4>
-          <p>Llega bien hidratado según tu rutina.</p>
-          <p><strong>Evita cambios drásticos de última hora.</strong></p>
-        </div>
-        <div class="hyd-item">
-          <h4 class="teal">DURANTE</h4>
-          <p>Bebe constantemente incluso si no tienes sed. Evita la deshidratación.</p>
-          <p><strong>Utiliza los suministros oficiales del evento.</strong></p>
-        </div>
-        <div class="hyd-item">
-          <h4 class="teal">EN CALOR</h4>
-          <p>Reduce el ritmo si es necesario. Atiende señales de mareo, confusión, escalofríos o debilidad inusual.</p>
-        </div>
-        <div class="hyd-item">
-          <h4>ASISTENCIA</h4>
-          <p>La entrega externa de hidratación o alimentación por terceros a corredores en movimiento está <strong>prohibida</strong>.</p>
-        </div>
+<!-- 20B HIDRATACIÓN -->
+<section class="bg-light" id="sec-hidratacion">
+  <div class="wrap">
+    <h2 class="title-xl" style="font-size:clamp(28px,4.2vw,40px);">HIDRATACIÓN:</h2>
+    <h2 class="title-xl accent-wrap" style="font-size:clamp(24px,3.6vw,34px);">SOLO EN PUNTOS OFICIALES</h2>
+    <p class="lead" style="margin-top:12px;">Todos los recorridos contarán con puntos de hidratación. La distribución exacta, productos y kilometrajes 2026 serán comunicados en la información operativa final.</p>
+    <div class="hyd-grid">
+      <div class="hyd-item">
+        <h4>ANTES</h4>
+        <p>Llega bien hidratado según tu rutina.</p>
+        <p><strong>Evita cambios drásticos de última hora.</strong></p>
       </div>
-      <div class="hyd-banner">
-        <div>
-          <h3>NO IMPROVISES</h3>
-          <h3 class="lime">EL DÍA DE LA CARRERA</h3>
-          <p>Se recomienda mantener la rutina habitual, no estrenar nutrición ni equipamiento y acudir al personal médico si aparecen síntomas que se aparten de lo esperado.</p>
-        </div>
-        <img src="manual-corredor-assets/images/hidratacion-botella.avif" alt="">
+      <div class="hyd-item">
+        <h4 class="teal">DURANTE</h4>
+        <p>Bebe constantemente incluso si no tienes sed. Evita la deshidratación.</p>
+        <p><strong>Utiliza los suministros oficiales del evento.</strong></p>
       </div>
+      <div class="hyd-item">
+        <h4 class="teal">EN CALOR</h4>
+        <p>Reduce el ritmo si es necesario. Atiende señales de mareo, confusión, escalofríos o debilidad inusual.</p>
+      </div>
+      <div class="hyd-item">
+        <h4>ASISTENCIA</h4>
+        <p>La entrega externa de hidratación o alimentación por terceros a corredores en movimiento está <strong>prohibida</strong>.</p>
+      </div>
+    </div>
+    <div class="hyd-banner">
+      <div>
+        <h3>NO IMPROVISES</h3>
+        <h3 class="lime">EL DÍA DE LA CARRERA</h3>
+        <p>Se recomienda mantener la rutina habitual, no estrenar nutrición ni equipamiento y acudir al personal médico si aparecen síntomas que se aparten de lo esperado.</p>
+      </div>
+      <img src="manual-corredor-assets/images/hidratacion-botella.avif" alt="">
     </div>
   </div>
 </section>
