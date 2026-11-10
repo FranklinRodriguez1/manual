@@ -448,6 +448,29 @@
   .back-index:hover{background:#fff;color:#1E5C96;border-color:#1E5C96;}
   @media (max-width:600px){ .back-index{top:12px;right:12px;font-size:12px;padding:10px 16px;} }
 </style>
+<style>
+/* ---------- GPX watch guide ---------- */
+#m7c-guia{--n:#1E5C96;--s:#2F84C0;--t:#2DA7B1;--l:rgba(30,92,150,.16);font-family:"Poppins",system-ui,sans-serif;color:#021726;background:#F8FEFF;border:1px solid var(--l);border-radius:18px;max-width:1100px;margin:0 auto;padding:20px 22px;line-height:1.5;box-sizing:border-box}
+#m7c-guia *{box-sizing:border-box}
+#m7c-guia h3{margin:0;color:var(--n);font-family:"Unbounded","Poppins",sans-serif;font-weight:800;font-size:1.05rem;text-transform:uppercase}
+#m7c-guia .g-sub{margin:4px 0 0;font-size:.88rem;opacity:.8}
+#m7c-guia .g-steps{list-style:none;margin:14px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+#m7c-guia .g-steps li{flex:1 1 200px;margin:0;padding:10px 12px;background:#fff;border:1px solid var(--l);border-radius:12px;font-size:.84rem}
+#m7c-guia .g-steps b{display:inline-grid;place-items:center;width:22px;height:22px;margin-right:6px;border-radius:50%;background:var(--s);color:#fff;font-size:.75rem}
+#m7c-guia .g-brands{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+#m7c-guia details{flex:1 1 160px;background:#fff;border:1px solid var(--l);border-radius:12px}
+#m7c-guia details[open]{flex-basis:100%}
+#m7c-guia summary{cursor:pointer;padding:9px 12px;font-weight:600;font-size:.86rem;color:var(--n);list-style:none}
+#m7c-guia summary::-webkit-details-marker{display:none}
+#m7c-guia summary::after{content:"+";float:right;color:var(--s);font-weight:700}
+#m7c-guia details[open] summary::after{content:"–"}
+#m7c-guia details ol{margin:0;padding:0 14px 12px 32px;font-size:.84rem}
+#m7c-guia details li{margin:3px 0}
+#m7c-guia .g-note{margin:12px 0 0;font-size:.8rem;opacity:.75}
+#m7c-guia .g-aviso{margin:6px 0 0;font-size:.8rem;font-style:italic;opacity:.7}
+/* Same width as the map card (1100px), separated from it */
+#m7c-guia{margin:20px auto 0}
+</style>
 </head>
 <body>
 
@@ -983,6 +1006,27 @@
         </button>
         <p class="m7c-dl-note">Archivo GPX para tu reloj: Garmin, COROS, Suunto, Polar, Amazfit o Apple Watch.</p>
       </div>
+    </div>
+
+    <!-- Watch guide: how to load the GPX on each smartwatch -->
+    <div id="m7c-guia">
+    <h3>Lleva el recorrido en tu reloj</h3>
+    <p class="g-sub">Descarga el GPX de tu distancia y úsalo como ruta en tu smartwatch.</p>
+    <p class="g-aviso">* Información susceptible a cambios por decisiones operativas o de seguridad.</p>
+    <ol class="g-steps">
+    <li><b>1</b>Elige tu distancia en el mapa y toca <strong>Descargar recorrido</strong>.</li>
+    <li><b>2</b>Busca tu reloj abajo y descarga en tu celular la app que te indicamos (App Store o Play Store).</li>
+    <li><b>3</b>Abre el .gpx con esa app, envía la ruta al reloj y pruébala antes de la carrera.</li>
+    </ol>
+    <div class="g-brands">
+    <details><summary>Garmin</summary><ol><li>Descarga <strong>Garmin Connect</strong> en tu celular (gratis, App Store o Play Store).</li><li>Abre el .gpx con Garmin Connect (iPhone: Archivos › Abrir con).</li><li>Tipo <strong>Carrera</strong> › Guardar.</li><li><strong>Enviar al dispositivo</strong> y sincroniza.</li><li>En el reloj: Correr › Navegación › Recorridos.</li></ol></details>
+    <details><summary>COROS</summary><ol><li>Descarga la app <strong>COROS</strong> en tu celular (gratis, App Store o Play Store).</li><li>Abre el .gpx con la app y toca Guardar.</li><li>Explorar › biblioteca de rutas (arriba a la derecha).</li><li>Abre la ruta › <strong>Sincronizar con tu dispositivo</strong> › Enviar.</li></ol></details>
+    <details><summary>Suunto</summary><ol><li>Descarga la app <strong>Suunto</strong> en tu celular (gratis, App Store o Play Store).</li><li>Guarda el .gpx en tu celular.</li><li>App Suunto › Mapa › <strong>+</strong> › Importar ruta (.gpx).</li><li>Guárdala y sincroniza el reloj.</li></ol></details>
+    <details><summary>Polar</summary><ol><li>Descarga la app <strong>Polar Flow</strong> en tu celular (gratis, App Store o Play Store); la usarás para sincronizar al final.</li><li>Desde un computador, en flow.polar.com › Favoritos › <strong>Importar ruta</strong>.</li><li>Sube el .gpx y toca Importar.</li><li>Sincroniza con FlowSync o abriendo la app Polar Flow en tu celular.</li></ol></details>
+    <details><summary>Amazfit</summary><ol><li>Descarga la app <strong>Zepp</strong> en tu celular (gratis, App Store o Play Store).</li><li>Abre el .gpx con la app Zepp y guárdalo como ruta.</li><li>Envíalo al reloj.</li><li>En el reloj: Navegación › Mis rutas.</li></ol></details>
+    <details><summary>Apple Watch</summary><ol><li>Descarga una app de rutas en tu iPhone, como <strong>WorkOutDoors</strong> o <strong>Footpath</strong> (de pago, App Store; Apple Watch no trae esto de fábrica).</li><li>Abre el .gpx en el iPhone con esa app y envíalo al reloj.</li></ol></details>
+    </div>
+    <p class="g-note">La ruta es una guía: sigue siempre la señalización y al personal de la carrera.</p>
     </div>
   </div>
 </section>
